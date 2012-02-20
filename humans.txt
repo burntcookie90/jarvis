@@ -10,7 +10,11 @@
 
 /* THANKS */
   Names (& URL): 
-  Daranh Hun
+  Daranh
+  Vishnu
+  Westley
+  Sameer
+  Sean
 
 /* SITE */
   Standards: HTML5, CSS3
