@@ -458,6 +458,16 @@ header{
 	height:50px;
 	background-image: url(img/resize_left.png);
 }
+#resize_reset{
+	width:50px;
+	height:50px;
+	background-image: url(img/resize_reset.png);
+}
+#resize_right{
+	width:50px;
+	height:50px;
+	background-image: url(img/resize_right.png);
+}
 .paddingset{
 	padding: 4px;
 }
