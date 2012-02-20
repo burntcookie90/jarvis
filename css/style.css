@@ -289,6 +289,10 @@ td { vertical-align: top; }
   h2, h3 { page-break-after: avoid; }
 }
 
+#whiteout{
+				position: absolute;
+				z-index: 10000;
+}
 #container{
 	width: inherit;
 	height: 98%;

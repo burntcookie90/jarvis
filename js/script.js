@@ -181,9 +181,14 @@ function setsizes() {
 
 }
 
+function hidestuff(boxid){
+   document.getElementById(boxid).style.visibility="hidden";
+}
+
 function init() {
 	setsizes();
 	ajaxcall();
+	hidestuff("whiteout");
 }
 
 function ajaxcall() {
