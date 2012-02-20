@@ -75,7 +75,7 @@ var json_success = {
 			"imgfolder" : "cars"
 		}]
 	}
-};
+}
 
 var jsonObj;
 var is_Playing = '1';
@@ -92,9 +92,25 @@ function playPause() {
 		});
 		is_Playing = '1';
 	}
+};
+
+var size_state = '0';
+function resize_right() {
+	var w = $(window).width();
+	var h = $(window).height();
+
+	if(size_state == '0') {
+		$('#main_leftpanel').css({
+			"width" : w / 2 - 10,
+		});
+
+		$('#main_rightpanel').css({
+			"width" : w / 2 - 10,
+		});
+	}
 }
 
-$(".buttons_controls_play_pause").mouseover(function(){
+$(".buttons_controls_play_pause").mouseover(function() {
 	if(is_Playing == '1') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play_hover.png')"
@@ -104,8 +120,8 @@ $(".buttons_controls_play_pause").mouseover(function(){
 			"background-image" : "url('./css/img/pause_hover.png')"
 		});
 	}
-	}).mouseout(function()
-	{if(is_Playing == '1') {
+}).mouseout(function() {
+	if(is_Playing == '1') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play.png')"
 		});
@@ -113,8 +129,8 @@ $(".buttons_controls_play_pause").mouseover(function(){
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/pause.png')"
 		});
-	}});
-
+	}
+});
 function setsizes() {
 	var w = $(window).width();
 	var h = $(window).height();
@@ -126,9 +142,7 @@ function setsizes() {
 	if(w < 500) {
 		w = 500;
 	}
-	
-	
-	
+
 	$("#main").css({
 		"width" : w,
 	});
