@@ -450,6 +450,7 @@ header{
 	width:150px;
 	height:50px;
 	float:right;
+	position:relative;
 	bottom:50px;
 }
 #resize_left{
