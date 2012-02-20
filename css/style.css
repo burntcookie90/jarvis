@@ -292,6 +292,9 @@ td { vertical-align: top; }
 #whiteout{
 				position: absolute;
 				z-index: 10000;
+				width: 10000px;
+				height: 10000px;
+				background: white;
 }
 #container{
 	width: inherit;

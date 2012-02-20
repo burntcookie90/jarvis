@@ -193,7 +193,7 @@ function init() {
 
 function ajaxcall() {
 	$.ajax({
-		url : 'http://localhost:8888/files_aptana/jarvis/php/json.php',
+		url : '../php/json.php',
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
