@@ -377,7 +377,9 @@ header{
 	height:54px;
 	position: relative;
 	background-image: url(img/play.png);
-	left:85px
+	left:85px;
+	top: -54px;
+	
 }
 .buttons_controls_play_pause:hover{
 	background-image: url(img/play_hover.png);
@@ -388,7 +390,8 @@ header{
 	position: relative;
 	background-image: url(img/next.png);
 	border-style: none;
-	left:85px
+	left:170px;
+	top: -108px;
 }
 .buttons_controls_next:hover{
 	background-image: url(img/next_hover.png);
