@@ -373,6 +373,7 @@ header{
 	width:81px;
 	height:54px;
 	position: relative;
+	background-color:#111111;
 	background-image: url(img/prev.png);
 	
 }
@@ -383,6 +384,7 @@ header{
 	width:80px;
 	height:54px;
 	position: relative;
+	background-color:#111111;
 	background-image: url(img/play.png);
 	left:85px;
 	top: -54px;
@@ -394,6 +396,7 @@ header{
 	width:80px;
 	height:53px;
 	position: relative;
+	background-color:#111111;
 	background-image: url(img/next.png);
 	border-style: none;
 	left:170px;
