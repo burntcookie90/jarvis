@@ -2,6 +2,7 @@
 <launchConfiguration type="com.aptana.js.debug.core.webbrowserLaunchConfigurationType">
 <booleanAttribute key="advancedRunEnabled" value="false"/>
 <booleanAttribute key="appendProjectName" value="true"/>
+<stringAttribute key="browserCmdLine" value=""/>
 <stringAttribute key="browserExecutable" value="/Applications/Firefox.app"/>
 <stringAttribute key="browserNature" value="Firefox"/>
 <stringAttribute key="externalBaseUrl" value=""/>

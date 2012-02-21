@@ -79,6 +79,7 @@ var json_success = {
 
 var jsonObj;
 var is_Playing = '1';
+var resize_pane_selected = '1';
 
 function playPause() {
 	if(is_Playing == '1') {
@@ -93,6 +94,49 @@ function playPause() {
 		is_Playing = '1';
 	}
 };
+
+function resizePanes(div){
+	if($(div).attr("id") == "resize_left")
+	{
+		
+		resize_pane_selected = '0';
+		$("#resize_left").css({
+			"background-image" : "url('./css/img/resize_left_selected.png')"
+		});
+		$("#resize_reset").css({
+			"background-image" : "url('./css/img/resize_reset.png')"
+		});
+		$("#resize_right").css({
+			"background-image" : "url('./css/img/resize_right.png')"
+		});
+	}
+	if($(div).attr("id") == "resize_reset")
+	{
+		resize_pane_selected = '1';
+		$(div).css({
+			"background-image" : "url('./css/img/resize_reset_selected.png')"
+		});
+		$("#resize_left").css({
+			"background-image" : "url('./css/img/resize_left.png')"
+		});
+		$("#resize_right").css({
+			"background-image" : "url('./css/img/resize_right.png')"
+		});
+	}
+	if($(div).attr("id") == "resize_right")
+	{
+		resize_pane_selected = '2';
+		$(div).css({
+			"background-image" : "url('./css/img/resize_right_selected.png')"
+		});
+		$("#resize_reset").css({
+			"background-image" : "url('./css/img/resize_reset.png')"
+		});
+		$("#resize_left").css({
+			"background-image" : "url('./css/img/resize_left.png')"
+		});
+	}
+}
 
 var size_state = '0';
 function resize_right() {
