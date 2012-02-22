@@ -1,7 +1,12 @@
 /* Author:
 
 */
+
+
 //Subscribe all divs to this function to resize
+var w = $(window).width();
+var rightPanelWidth = w/2;
+var leftPanelWidth = w/2;
 var json_fail = {
 	'SONG' : 'FAIL',
 	'VIDEO' : 'null',
@@ -98,7 +103,8 @@ function playPause() {
 function resizePanes(div){
 	if($(div).attr("id") == "resize_left")
 	{
-		
+		rightPanelWidth = w/4*3;
+		leftPanelWidth = w/4;
 		resize_pane_selected = '0';
 		$("#resize_left").css({
 			"background-image" : "url('./css/img/resize_left_selected.png')"
@@ -109,9 +115,13 @@ function resizePanes(div){
 		$("#resize_right").css({
 			"background-image" : "url('./css/img/resize_right.png')"
 		});
+		
+		
 	}
 	if($(div).attr("id") == "resize_reset")
 	{
+		rightPanelWidth = w/2;
+		leftPanelWidth = w/2;
 		resize_pane_selected = '1';
 		$(div).css({
 			"background-image" : "url('./css/img/resize_reset_selected.png')"
@@ -125,6 +135,8 @@ function resizePanes(div){
 	}
 	if($(div).attr("id") == "resize_right")
 	{
+		rightPanelWidth = w/4;
+		leftPanelWidth = w/4*3;
 		resize_pane_selected = '2';
 		$(div).css({
 			"background-image" : "url('./css/img/resize_right_selected.png')"
@@ -135,14 +147,35 @@ function resizePanes(div){
 		$("#resize_left").css({
 			"background-image" : "url('./css/img/resize_left.png')"
 		});
+		
 	}
+	$('#main_rightpanel').css({
+		"width" : rightPanelWidth - 10,
+		});
+		$('#rightpanel_bottom').css({
+		"width" : rightPanelWidth
+		});
+		$('#rightpanel_top').css({
+			"width" : rightPanelWidth,
+		});
+		$('#main_leftpanel').css({
+			"width" : leftPanelWidth- 10
+		});
+
 }
+
+
+
 
 var size_state = '0';
 function resize_right() {
-	var w = $(window).width();
+	w = $(window).width();
 	var h = $(window).height();
 
+	
+
+
+		
 	if(size_state == '0') {
 		$('#main_leftpanel').css({
 			"width" : w / 2 - 10,
@@ -176,9 +209,23 @@ $(".buttons_controls_play_pause").mouseover(function() {
 	}
 });
 function setsizes() {
-	var w = $(window).width();
+	w = $(window).width();
 	var h = $(window).height();
+	
 	var buffer = 15;
+	
+
+	if(resize_pane_selected == '0') {
+		rightPanelWidth = w / 4 * 3;
+		leftPanelWidth = w / 4;
+	} else if(resize_pane_selected == '1') {
+		rightPanelWidth = w / 2;
+		leftPanelWidth = w / 2;
+	} else {
+		rightPanelWidth = w / 4;
+		leftPanelWidth = w / 4 * 3;
+	}
+
 
 	if(h < 300) {
 		h = 300;
@@ -201,21 +248,21 @@ function setsizes() {
 	});
 
 	$('#main_leftpanel').css({
-		"width" : w / 2 - 10,
+		"width" : leftPanelWidth - 10,
 	});
 
 	$('#main_rightpanel').css({
-		"width" : w / 2 - 10,
+		"width" : rightPanelWidth- 10,
 	});
 	$("#main").css({
 		"height" : h - $("footer").height() - $("header").height() - buffer
 	});
 
 	$('#rightpanel_bottom').css({
-		"width" : w / 2,
+		"width" : rightPanelWidth,
 	})
 	$('#rightpanel_top').css({
-		"width" : w / 2,
+		"width" : rightPanelWidth,
 		"height" : $("#main").height() - $("#rightpanel_bottom").height()
 	})
 	$('.mediameta').css({
