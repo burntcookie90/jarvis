@@ -10,9 +10,9 @@
 
 /* THANKS */
   Names (& URL): 
-  Daranh
+  Daranh Hun
   Vishnu Rajeevan
-  Westley
+  Westley Schrack
   Sameer
   Sean Latif
 
