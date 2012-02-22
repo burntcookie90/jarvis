@@ -161,6 +161,9 @@ function resizePanes(div){
 		$('#main_leftpanel').css({
 			"width" : leftPanelWidth- 10
 		});
+		$('.mediameta').css({
+		"width" : rightPanelWidth - 100
+		});
 
 }
 
@@ -266,7 +269,7 @@ function setsizes() {
 		"height" : $("#main").height() - $("#rightpanel_bottom").height()
 	})
 	$('.mediameta').css({
-		"width" : w / 2 - 100,
+		"width" : rightPanelWidth - 100,
 		"height" : ((h - 240) / 4) - 50
 	})
 
