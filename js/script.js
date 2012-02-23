@@ -297,15 +297,22 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
+	json_intake(jsonObj);
 });
+
+
 
 /**
  * Processes JSON upon opening application.
  * It interprets the JSON and populates the application with media names and files
  */
 function json_intake(jsonObj){
-	var numOfSongs = jsonObj.SONG.songs.length;
-	if ( numOfSongs > 0){
+	var numSongs = jsonObj.SONG.songs.length;
+	var numVideos = jsonObj.VIDEO.videos.length;
+	var numPics = jsonObj.IMAGES.images.length;
+	var sean = jsonObj.VIDEO.videos[0].vidname;
+	
+	if ( numSongs > 0){
 		
 	} 
 }
