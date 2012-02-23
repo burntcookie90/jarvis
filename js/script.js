@@ -1,7 +1,9 @@
 /* Author: TEAM JARVIS
 
 */
-
+var jsonObj;
+var is_Playing = '1';
+var resize_pane_selected = '1';
 //Subscribe all divs to this function to resize
 var w = $(window).width();
 var rightPanelWidth = w / 2;
@@ -81,22 +83,27 @@ var json_success = {
 	}
 }
 
-var jsonObj;
-var is_Playing = '1';
-var resize_pane_selected = '1';
+
 
 function playPause() {
-	if(is_Playing == '1') {
-		$(".buttons_controls_play_pause").css({
-			"background-image" : "url('./css/img/pause.png')"
-		});
-		is_Playing = '0';
-	} else {
-		$(".buttons_controls_play_pause").css({
-			"background-image" : "url('./css/img/play.png')"
-		});
-		is_Playing = '1';
-	}
+	
+	_V_("mainvideo").ready(function()
+	{
+		var myPlayer = this;
+		if(is_Playing == '1') {				
+	    	  myPlayer.play();						
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/pause.png')"
+			});
+			is_Playing = '0';
+		} else {			
+			myPlayer.pause();			
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/play.png')"
+			});
+			is_Playing = '1';
+		}		
+	});
 };
 
 var isGhostBarEnabled = '0'
@@ -232,6 +239,7 @@ function resizePanes(div) {
 	});
 	$('#rightpanel_top').css({
 		"width" : rightPanelWidth,
+		
 	});
 	$('#main_leftpanel').css({
 		"width" : leftPanelWidth - 10
@@ -353,7 +361,7 @@ function init() {
 
 function ajaxcall() {
 	$.ajax({
-		url : '../php/json.php',
+		url : '../jarvis/php/json.php',
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
@@ -361,7 +369,7 @@ function ajaxcall() {
 		error : function(data) {
 			jsonObj = json_success;
 		},
-		type : 'POST'
+		type : 'GET'
 	});
 }
 
