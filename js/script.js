@@ -184,6 +184,70 @@ function musicGhostBar(div) {
 
 }
 
+$(".music_artist").mouseover(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_artist").css({
+			"background-image" : "url('./css/img/artists_hover.png')",
+			"background-color" : "#34b4e3"
+		});
+	} 
+}).mouseout(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_artist").css({
+			"background-image" : "url('./css/img/artists.png')",
+			"background-color" : "#111111"
+		});
+	} 
+});
+
+$(".music_album").mouseover(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_album").css({
+			"background-image" : "url('./css/img/albums_hover.png')",
+			"background-color" : "#34b4e3"
+		});
+	} 
+}).mouseout(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_album").css({
+			"background-image" : "url('./css/img/albums.png')",
+			"background-color" : "#111111"
+		});
+	} 
+});
+
+$(".music_genre").mouseover(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_genre").css({
+			"background-image" : "url('./css/img/genres_hover.png')",
+			"background-color" : "#34b4e3"
+		});
+	} 
+}).mouseout(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_genre").css({
+			"background-image" : "url('./css/img/genres.png')",
+			"background-color" : "#111111"
+		});
+	} 
+});
+
+$(".music_songs").mouseover(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_songs").css({
+			"background-image" : "url('./css/img/songs_hover.png')",
+			"background-color" : "#34b4e3"
+		});
+	} 
+}).mouseout(function() {
+	if(isGhostBarEnabled == '1') {
+		$(".music_songs").css({
+			"background-image" : "url('./css/img/songs.png')",
+			"background-color" : "#111111"
+		});
+	} 
+});
+
 function resizePanes(div) {
 	if($(div).attr("id") == "resize_left") {
 		rightPanelWidth = w / 4 * 3;

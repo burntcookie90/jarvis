@@ -461,8 +461,8 @@ header{
 }
 
 .music_artist:hover{
-	background-color:#34b4e3;
-	background-image: url(img/artists_hover.png)
+/*	background-color:#34b4e3;*/
+/*	background-image: url(img/artists_hover.png)*/
 }
 
 .music_album:hover{
