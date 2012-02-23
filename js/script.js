@@ -87,6 +87,10 @@ var json_success = {
 
 function playPause() {
 	if(is_Playing == '1') {
+		
+		
+		
+		
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/pause.png')"
 		});
@@ -97,6 +101,10 @@ function playPause() {
 		});
 		is_Playing = '1';
 	}
+	
+	
+	
+	
 };
 
 var isGhostBarEnabled = '0'
