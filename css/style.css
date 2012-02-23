@@ -409,6 +409,46 @@ header{
 .buttons_controls_next:hover{
 	background-image: url(img/next_hover.png);
 }
+
+.trackbar{
+	position: relative;
+	width: 100px;
+	height: 20px;
+	border: 3px;
+	solid #cccccc;
+	left:315px;
+	top: -164px;
+}
+
+.play_time{
+	position: relative;
+	left : 255px;
+	top: -144px;
+	width: 46px;
+	height: 20px;	
+}
+
+.volume{
+	position: relative;
+	width: 100px;
+	height: 20px;
+	border: 3px;
+	solid #cccccc;
+	left:1406px;
+	top: -237px;
+}
+
+.volume_icon{
+	width: 80px;
+	height:53px;
+	position: relative;
+	background-color:#111111;
+	background-image: url(img/next.png);
+	border-style: none;
+	left:1321px;
+	top: -200px;
+}
+
 .float_l{
 	float: left;
 }
@@ -540,15 +580,24 @@ footer{
 }
 #container_controls{
 	overflow:hidden;
-	width: 300px;
+	width: 700px;
 	height: 100%;
 	position: relative;
 }
 
+.player_controls{
+	overflow:hidden;
+		width: 600px;
+	height: 54px;
+	position: relative;
+		
+}
 #media_select_songs{
 	left: 107px;
 	bottom: 54px;
 }
+
+
 #media_select_vids{
 	left: 214px;
 	bottom: 107px;

@@ -54,7 +54,7 @@
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
 						<video id="mainvideo" class="video-js vjs-default-skin"  preload="auto" 
-						autoplay="true"
+					 controls
 						  data-setup="{}">
 						  <source src="media/video/MeettheSpy.mp4" type='video/mp4'>						  
 						</video>
@@ -92,11 +92,26 @@
 				</div>
 			</div>
 			<footer class="bg4 paddingset">
+				
 				<div id="container_controls" class="bg1">
 					<div id="prev_img" class="buttons_controls_prev"></div>
 					<div id="play_pause_img" onclick= "playPause()" class="buttons_controls_play_pause bg2 "></div>
 					<div id="next_img" class="buttons_controls_next bg2" onclick="testJSON()"></div>
+							<div id="play_time_bar" class= "play_time bg2">	
+								<FONT COLOR="FFFFFF">0:00:00</FONT>;
+					</div>
+					<div id="progress"  onclick= "seek()" class = "trackbar bg2">
+  						 <p style="position: absolute; left: 0; top: 0; background-color: #0000ff; height: 100%; font-size: 0px;">&nbsp;</p>
+					</div>
+					<div id="volumeIcon"  onclick = "mute()" class="volume_icon bg2 "></div>
+					<div id="volumeBar"  onclick= "changeVolume()" class = "volume bg2">
+  						 <p style="position: absolute; left: 0; top: 0; background-color: #0000ff; height: 100%; font-size: 0px;">&nbsp;</p>
+					</div>
+
 				</div>
+					
+				</div>
+				
 			</footer>
 		</div>
 		<script src="js/libs/jquery-1.6.2.min.js"></script>
