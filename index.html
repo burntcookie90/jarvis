@@ -8,8 +8,8 @@
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="css/style.css">
-		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">   //video-js
-		<script src="http://vjs.zencdn.net/c/video.js"></script>				//video-js
+		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">   <!--video-js-->
+		<script src="http://vjs.zencdn.net/c/video.js"></script>				<!--//video-js-->
 	</head>
 	<body class="bg1 nooverflow">
 		<div id="whiteout"></div>
@@ -23,13 +23,18 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						<div id="media_select_img" class="buttons_media_pics bg2 marginset"></div>
-						<div id="media_select_songs" class="buttons_media_music bg2 marginset"></div>
-						<div id="media_select_vids" class="buttons_media_vids bg2 marginset"></div>
+						<div id="media_select_img" onclick="musicGhostBar(this)" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_songs" onclick="musicGhostBar(this)" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_vids" onclick="musicGhostBar(this)" class="buttons_media_vids bg2 marginset"></div>
 					</div>
 				</div>
-				<div id="media_select_level2" class="bg1">
-					<div id="media_select_level3" class="center bg2"></div>					
+				<div id="media_select_level2" class="bg1">	<!--Ghost bar for music-->
+					<div id="media_select_level3" class="center">
+						<div id = "music_artist"></div>
+						<div id = "music_album"></div>
+						<div id = "music_genre"></div>
+						<div id = "music_songs"></div>
+					</div>					
 				</div>
 				<div id="resize_buttons" class="bg1">
 						<div id="resize_right" onclick="resizePanes(this)" class= "float_r"></div>
@@ -48,10 +53,11 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-						<video class="video-js vjs-default-skin" controls="controls"
-						  preload="auto" width="100%" height="100%"
+					
+						<video class="video-js vjs-default-skin" controls preload="auto" 
+						autoplay="true" width="100%" height="100%"
 						  data-setup="{}">
-						  <source src="MeettheSpy.mp4" type='video/mp4'>						  
+						  <source src="media/video/MeettheSpy.mp4" type='video/mp4'>						  
 						</video>
 					</div>
 					<div id="rightpanel_bottom" class="bg2 padding_5">

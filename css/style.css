@@ -425,6 +425,22 @@ header{
 	overflow: hidden;
 	vertical-align: middle;
 }
+
+#music_artist{
+	
+}
+
+#music_album{
+	
+}
+
+#music_genre{
+	
+}
+
+#music_songs{
+	
+}
 #jarvis_logo{
 	float:left;
 	height:inherit;
@@ -450,8 +466,10 @@ header{
 	height:50px;
 }
 #media_select_level3{
-	width: 600px;
+	width: 400px;
 	height: inherit;
+	background-color: 111111;
+	overflow:hidden;
 }
 #resize_buttons{
 	width:150px;
