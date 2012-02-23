@@ -99,6 +99,11 @@ function playPause() {
 	}
 };
 
+function musicGhostBar(){
+	$("#media_select_level3").css({
+		"background-color" :"#262c32"
+	});
+}
 function resizePanes(div) {
 	if($(div).attr("id") == "resize_left") {
 		rightPanelWidth = w / 4 * 3;
