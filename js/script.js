@@ -106,16 +106,22 @@ function musicGhostBar(div) {
 			$("#media_select_level3").css({
 				"background-color" : "#262c32"
 			});
+			
+			$("#music_artist").css({
+				"background-image" : "url(./css/img/artists.png)"
+			});
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
 		$("#media_select_level3").css({
 			"background-color" : "#111111"
 		});
+		isGhostBarEnabled = '0';
 	} else if($(div).attr("id") == "media_select_vids") {
 		$("#media_select_level3").css({
 			"background-color" : "#111111"
 		});
+		isGhostBarEnabled = '0';
 	}
 
 }
@@ -313,4 +319,22 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
+	json_intake(jsonObj);
 });
+
+
+
+/**
+ * Processes JSON upon opening application.
+ * It interprets the JSON and populates the application with media names and files
+ */
+function json_intake(jsonObj){
+	var numSongs = jsonObj.SONG.songs.length;
+	var numVideos = jsonObj.VIDEO.videos.length;
+	var numPics = jsonObj.IMAGES.images.length;
+	var sean = jsonObj.VIDEO.videos[0].vidname;
+	
+	if ( numSongs > 0){
+		
+	} 
+}
