@@ -294,7 +294,6 @@ td { vertical-align: top; }
 	z-index: 10000;
 	width: 10000px;
 	height: 10000px;
-	background: white;
 }
 #container{
 	width: inherit;
@@ -315,6 +314,9 @@ td { vertical-align: top; }
 }
 .white{
 	background: white;
+}
+.text_color{
+	color: #34b4e3;
 }
 
 #media_select_btn_container{
