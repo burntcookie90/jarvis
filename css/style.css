@@ -427,19 +427,27 @@ header{
 }
 
 #music_artist{
-	
+	width:100px;
+	height:inherit;
+	position:relative;
 }
 
 #music_album{
-	
+	width:100px;
+	height:inherit;	
+	position:relative;
 }
 
 #music_genre{
-	
+	width:100px;
+	height:inherit;
+	position:relative;
 }
 
 #music_songs{
-	
+	width:100px;
+	height:inherit;
+	position:relative;
 }
 #jarvis_logo{
 	float:left;

@@ -110,6 +110,18 @@ function musicGhostBar(div) {
 			$("#music_artist").css({
 				"background-image" : "url(./css/img/artists.png)"
 			});
+			
+			$("#music_album").css({
+				"background-image" : "url(./css/img/albums.png)"
+			});
+			
+			$("#music_genre").css({
+				"background-image" : "url(./css/img/genres.png)"
+			});
+			
+			$("#music_songs").css({
+				"background-image" : "url(./css/img/songs.png)"
+			});
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
