@@ -83,8 +83,6 @@ var json_success = {
 	}
 }
 
-jsonObj = json_success;
-
 function playPause() {
 	
 	_V_("mainvideo").ready(function()
@@ -365,8 +363,8 @@ function ajaxcall() {
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
-			//test = jsonObj.VIDEO.videos[0].vidname;
-			//alert(test);
+			// store the media information into localstorage
+			localStorage.setItem("media", JSON.stringify(jsonObj));
 		},
 		error : function(data) {
 			jsonObj = json_success;
@@ -382,20 +380,20 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
-	storeJSON();
+	//storeJSON();
 });
 
 /**
  * stores the strigified JSON object into local storage
- */
+ *
 function storeJSON()
 {
 	// because local storage really only deals with strings, the JSON object must be stringified, 
 	// meaning it is now a long arrayof strings
-	localStorage.setItem("media", JSON.stringify(jsonObj));
+
 	json_intake(jsonObj);
 }
-
+*/
 /**
  * Processes JSON upon opening application.
  * It interprets the JSON and populates the application with media names and files
