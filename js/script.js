@@ -86,17 +86,24 @@ var json_success = {
 jsonObj = json_success;
 
 function playPause() {
-	if(is_Playing == '1') {
-		$(".buttons_controls_play_pause").css({
-			"background-image" : "url('./css/img/pause.png')"
-		});
-		is_Playing = '0';
-	} else {
-		$(".buttons_controls_play_pause").css({
-			"background-image" : "url('./css/img/play.png')"
-		});
-		is_Playing = '1';
-	}
+	
+	_V_("mainvideo").ready(function()
+	{
+		var myPlayer = this;
+		if(is_Playing == '1') {				
+	    	  myPlayer.play();						
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/pause.png')"
+			});
+			is_Playing = '0';
+		} else {			
+			myPlayer.pause();			
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/play.png')"
+			});
+			is_Playing = '1';
+		}		
+	});
 };
 
 var isGhostBarEnabled = '0'
@@ -104,24 +111,77 @@ function musicGhostBar(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		if(isGhostBarEnabled == '0') {
 			$("#media_select_level3").css({
-				"background-color" : "#262c32"
+				"background-color" : "#111111",
+				"visibility" : "visible"
 			});
-			
+
 			$("#music_artist").css({
-				"background-image" : "url(./css/img/artists.png)"
+				"background-image" : "url(./css/img/artists.png)",
+				"visibility" : "visible"
+			});
+
+			$("#music_album").css({
+				"background-image" : "url(./css/img/albums.png)",
+				"visibility" : "visible"
+			});
+
+			$("#music_genre").css({
+				"background-image" : "url(./css/img/genres.png)",
+				"visibility" : "visible"
+			});
+
+			$("#music_songs").css({
+				"background-image" : "url(./css/img/songs.png)",
+				"visibility" : "visible"
 			});
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
-		$("#media_select_level3").css({
-			"background-color" : "#111111"
-		});
-		isGhostBarEnabled = '0';
+		if(isGhostBarEnabled == '1') {
+			$("#media_select_level3").css({
+				"background-color" : "#111111"
+			});
+
+			$("#music_artist").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_album").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_genre").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_songs").css({
+				"visibility" : "hidden"
+			});
+			isGhostBarEnabled = '0';
+		}
 	} else if($(div).attr("id") == "media_select_vids") {
-		$("#media_select_level3").css({
-			"background-color" : "#111111"
-		});
-		isGhostBarEnabled = '0';
+		if(isGhostBarEnabled == '1') {
+			$("#media_select_level3").css({
+				"background-color" : "#111111"
+			});
+
+			$("#music_artist").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_album").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_genre").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_songs").css({
+				"visibility" : "hidden"
+			});
+			isGhostBarEnabled = '0';
+		}
 	}
 
 }
@@ -179,6 +239,7 @@ function resizePanes(div) {
 	});
 	$('#rightpanel_top').css({
 		"width" : rightPanelWidth,
+		
 	});
 	$('#main_leftpanel').css({
 		"width" : leftPanelWidth - 10
@@ -335,19 +396,17 @@ function storeJSON()
 	json_intake(jsonObj);
 }
 
-
-
 /**
  * Processes JSON upon opening application.
  * It interprets the JSON and populates the application with media names and files
  */
-function json_intake(jsonObj){
+function json_intake(jsonObj) {
 	var numSongs = jsonObj.SONG.songs.length;
 	var numVideos = jsonObj.VIDEO.videos.length;
 	var numPics = jsonObj.IMAGES.images.length;
 	var sean = jsonObj.VIDEO.videos[0].vidname;
-	
-	if ( numSongs > 0){
-		
-	} 
+
+	if(numSongs > 0) {
+
+	}
 }

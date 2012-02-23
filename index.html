@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">   <!--video-js-->
 		<script src="http://vjs.zencdn.net/c/video.js"></script>				<!--//video-js-->
+	
 	</head>
 	<body class="bg1 nooverflow">
 		<div id="whiteout"></div>
@@ -29,10 +30,10 @@
 				</div>
 				<div id="media_select_level2" class="bg1">	<!--Ghost bar for music-->
 					<div id="media_select_level3" class="center">
-						<div id = "music_artist"></div>
-						<div id = "music_album"></div>
-						<div id = "music_genre"></div>
-						<div id = "music_songs"></div>
+						<div id = "music_artist" class="music_artist"></div>
+						<div id = "music_album" class="music_album"></div>
+						<div id = "music_genre" class="music_genre"></div>
+						<div id = "music_songs" class="music_songs"></div>
 					</div>					
 				</div>
 				<div id="resize_buttons" class="bg1">
@@ -52,9 +53,8 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-					
-						<video class="video-js vjs-default-skin" controls preload="auto" 
-						autoplay="true" width="100%" height="100%"
+						<video id="mainvideo" class="video-js vjs-default-skin"  preload="auto" 
+						autoplay="true" 
 						  data-setup="{}">
 						  <source src="media/video/MeettheSpy.mp4" type='video/mp4'>						  
 						</video>
