@@ -83,7 +83,7 @@ var json_success = {
 	}
 }
 
-
+jsonObj = json_success;
 
 function playPause() {
 	if(is_Playing == '1') {
@@ -304,6 +304,8 @@ function ajaxcall() {
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
+			//test = jsonObj.VIDEO.videos[0].vidname;
+			//alert(test);
 		},
 		error : function(data) {
 			jsonObj = json_success;
@@ -319,16 +321,17 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
-	getJSONInfo();
+	storeJSON();
 });
 
-function getJSONInfo()
+/**
+ * stores the strigified JSON object into local storage
+ */
+function storeJSON()
 {
-	//localStorage.setItem("test", JSON.stringify(jsonObj));
-	var test = jsonObj.VIDEO.videos[0].vidname;
-	alert(test);
-	document.write(test);
-	//getJSONInfo();
+	// because local storage really only deals with strings, the JSON object must be stringified, 
+	// meaning it is now a long arrayof strings
+	localStorage.setItem("media", JSON.stringify(jsonObj));
 	json_intake(jsonObj);
 }
 

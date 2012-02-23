@@ -14,7 +14,6 @@
 	<body class="bg1 nooverflow">
 		<div id="whiteout"></div>
 		<div id="fullscreen" >
-			
 		</div>
 		<div id="container" class="bg1">
 			<header class="bg1 paddingset">
@@ -63,6 +62,12 @@
 					<div id="rightpanel_bottom" class="bg2 padding_5">
 						<!-- These will all need to be templates depending on media type -->
 						<div id="media_SONG" class="mediameta center_hor nooverflow center_ver text_color">
+						<script type="text/javascript">
+							media = JSON.parse(localStorage.getItem("media"));
+							document.write(media.VIDEO.videos[0].vidtitle);
+							document.write(media.VIDEO.videos[0].vidname);
+							document.write(media.VIDEO.videos[0].vidfolder);
+						</script>	
 							<div id="media_img" class="nooverflow">
 								Picture
 							</div>
