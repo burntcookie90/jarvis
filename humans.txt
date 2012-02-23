@@ -13,7 +13,7 @@
   Daranh Hun
   Vishnu Rajeevan
   Westley Schrack
-  Sameer
+  Sameer Yadav
   Sean Latif
 
 /* SITE */
