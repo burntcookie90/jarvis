@@ -86,25 +86,24 @@ var json_success = {
 
 
 function playPause() {
-	if(is_Playing == '1') {
-		
-		
-		
-		
-		$(".buttons_controls_play_pause").css({
-			"background-image" : "url('./css/img/pause.png')"
-		});
-		is_Playing = '0';
-	} else {
-		$(".buttons_controls_play_pause").css({
-			"background-image" : "url('./css/img/play.png')"
-		});
-		is_Playing = '1';
-	}
 	
-	
-	
-	
+	_V_("mainvideo").ready(function()
+	{
+		var myPlayer = this;
+		if(is_Playing == '1') {				
+	    	  myPlayer.play();						
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/pause.png')"
+			});
+			is_Playing = '0';
+		} else {			
+			myPlayer.pause();			
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/play.png')"
+			});
+			is_Playing = '1';
+		}		
+	});
 };
 
 var isGhostBarEnabled = '0'
