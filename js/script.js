@@ -522,7 +522,7 @@ function changeVolume(){
 	oldVolume = xPercent;
 	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((xPercent*100)+'%'));
 	$(".volume_icon").css({
-			"background-image" : "url('./css/img/volume.png')"
+			"background-image" : "url('./css/img/sound.png')"
 	});
 	
 }
@@ -532,7 +532,7 @@ function mute(){
 	if(isMuted == '0')
 	{
 	$(".volume_icon").css({
-			"background-image" : "url('./css/img/play_hover.png')"
+			"background-image" : "url('./css/img/muted.png')"
 		});
 	_V_("mainvideo").volume(0); 
 	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = ('0%');
@@ -542,7 +542,7 @@ function mute(){
 	{
 		isMuted = '0';
 		$(".volume_icon").css({
-			"background-image" : "url('./css/img/next.png')"
+			"background-image" : "url('./css/img/sound.png')"
 		});
 	_V_("mainvideo").volume(oldVolume); 
 	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((oldVolume*100)+'%'));
