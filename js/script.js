@@ -326,6 +326,7 @@ function getJSONInfo()
 {
 	//localStorage.setItem("test", JSON.stringify(jsonObj));
 	var test = jsonObj.VIDEO.videos[0].vidname;
+	alert(test);
 	document.write(test);
 	//getJSONInfo();
 	json_intake(jsonObj);
