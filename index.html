@@ -8,6 +8,8 @@
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<link rel="stylesheet" href="css/style.css">
+		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">   //video-js
+		<script src="http://vjs.zencdn.net/c/video.js"></script>				//video-js
 	</head>
 	<body class="bg1 nooverflow">
 		<div id="whiteout"></div>
@@ -48,6 +50,12 @@
 						<!-- video tag goes here -->
 						<video width = "100%" height = "100%">
 							<source src="MeettheSpy.mp4" type= "video/mp4"></source>
+						</video>
+						<video class="video-js vjs-default-skin" controls
+						  preload="auto" width="100%" height="100%" "
+						  data-setup="{}">
+						  <source src="my_video.mp4" type='video/mp4'>
+						  <source src="my_video.webm" type='video/webm'>
 						</video>
 					</div>
 					<div id="rightpanel_bottom" class="bg2 padding_5">
