@@ -1,7 +1,9 @@
 /* Author: TEAM JARVIS
 
 */
-
+var jsonObj;
+var is_Playing = '1';
+var resize_pane_selected = '1';
 //Subscribe all divs to this function to resize
 var w = $(window).width();
 var rightPanelWidth = w / 2;
@@ -81,9 +83,7 @@ var json_success = {
 	}
 }
 
-var jsonObj;
-var is_Playing = '1';
-var resize_pane_selected = '1';
+
 
 function playPause() {
 	if(is_Playing == '1') {
@@ -308,7 +308,7 @@ function ajaxcall() {
 		error : function(data) {
 			jsonObj = json_success;
 		},
-		type : 'POST'
+		type : 'GET'
 	});
 }
 
