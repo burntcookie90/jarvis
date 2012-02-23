@@ -407,14 +407,27 @@ function ajaxcall() {
 	});
 }
 function seek(){
+	//Get mouse X position
 	var x =  event.pageX;
+	//Get the offset of the trackbar
 	var xOffset = $(".trackbar").offset().left;
+	//Set the xOffset to the offset of the actual trackbar
 	xOffset = x-xOffset;
+	//Create a percentage of progress on the bar
 	var xPercent = xOffset/parseInt(document.getElementById('progress').style.width);
+	//Sets video to the play time
 	_V_("mainvideo").currentTime(_V_("mainvideo").duration()*xPercent); 
 	_V_("mainvideo").play();
-	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (xPercent*100);
+	_V_("mainvideo").pause();
+	_V_("mainvideo").play();
+	trackBarProgress(xPercent*100);
 	
+}
+
+function trackBarProgress(percent)
+{
+	//Sets the trackbar to the current percentage;
+	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (percent);
 }
 var trackBarUpdate = function(){
 	var percent = '0%';
@@ -422,7 +435,7 @@ var trackBarUpdate = function(){
 	{
 		percent = _V_("mainvideo").currentTime()/_V_("mainvideo").duration()*100 + '%';
 	}
-	document.getElementById('progress').getElementsByTagName('p')[0].style.width = percent;
+	trackBarProgress(percent);
   };
   _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
