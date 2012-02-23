@@ -319,8 +319,17 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
-	json_intake(jsonObj);
+	getJSONInfo();
 });
+
+function getJSONInfo()
+{
+	//localStorage.setItem("test", JSON.stringify(jsonObj));
+	var test = jsonObj.VIDEO.videos[0].vidname;
+	document.write(test);
+	//getJSONInfo();
+	json_intake(jsonObj);
+}
 
 
 
