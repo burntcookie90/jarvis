@@ -194,7 +194,8 @@ function resizePanes(div) {
 	$('.mediameta').css({
 		"width" : rightPanelWidth - 100
 	});
-
+	$("#mainvideo").width(rightPanelWidth);
+	$("#mainvideo").height(rightPanelWidth*9/16);
 }
 
 var size_state = '0';
@@ -293,6 +294,8 @@ function setsizes() {
 		"width" : rightPanelWidth - 100,
 		"height" : ((h - 240) / 4) - 50
 	})
+	$("#mainvideo").width(rightPanelWidth);
+	$("#mainvideo").height($("#main").height() - $("#rightpanel_bottom").height());
 
 }
 
