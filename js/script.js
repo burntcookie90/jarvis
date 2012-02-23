@@ -522,7 +522,7 @@ function changeVolume(){
 	oldVolume = xPercent;
 	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((xPercent*100)+'%'));
 	$(".volume_icon").css({
-			"background-image" : "url('./css/img/next.png')"
+			"background-image" : "url('./css/img/volume.png')"
 	});
 	
 }

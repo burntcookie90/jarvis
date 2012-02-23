@@ -442,9 +442,14 @@ header{
 	height:53px;
 	position: relative;
 	background-color:#111111;
-	background-image: url(img/next.png);
+	background-image: url(img/fullscreen.png);
 	border-style: none;
 	top: -273px;
+}
+
+.fullscreen:hover{
+	background-image: url(img/fullscreen_hover.png);
+	background-color: #34B4E3;
 }
 
 .volume_icon{
@@ -452,7 +457,7 @@ header{
 	height:53px;
 	position: relative;
 	background-color:#111111;
-	background-image: url(img/next.png);
+	background-image: url(img/volume.png);
 	border-style: none;
 	left:1321px;
 	top: -200px;
