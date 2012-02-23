@@ -99,11 +99,33 @@ function playPause() {
 	}
 };
 
-function musicGhostBar(){
-	$("#media_select_level3").css({
-		"background-color" :"#262c32"
-	});
+var isGhostBarEnabled = '0'
+function musicGhostBar(div) {
+	if($(div).attr("id") == "media_select_songs") {
+		if(isGhostBarEnabled == '0') {
+			$("#media_select_level3").css({
+				"background-color" : "#262c32"
+			});
+			
+			$("#music_artist").css({
+				"background-image" : "url(./css/img/artists.png)"
+			});
+			isGhostBarEnabled = '1';
+		}
+	} else if($(div).attr("id") == "media_select_img") {
+		$("#media_select_level3").css({
+			"background-color" : "#111111"
+		});
+		isGhostBarEnabled = '0';
+	} else if($(div).attr("id") == "media_select_vids") {
+		$("#media_select_level3").css({
+			"background-color" : "#111111"
+		});
+		isGhostBarEnabled = '0';
+	}
+
 }
+
 function resizePanes(div) {
 	if($(div).attr("id") == "resize_left") {
 		rightPanelWidth = w / 4 * 3;
