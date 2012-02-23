@@ -299,7 +299,9 @@ td { vertical-align: top; }
 	width: inherit;
 	height: 98%;
 }
-
+#main_leftpanel ul{
+	list-style-type: none;
+}
 .bg1{
 	background: #111111;
 }
