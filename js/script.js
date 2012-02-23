@@ -186,6 +186,7 @@ function resizePanes(div) {
 	});
 	$('#rightpanel_top').css({
 		"width" : rightPanelWidth,
+		
 	});
 	$('#main_leftpanel').css({
 		"width" : leftPanelWidth - 10
