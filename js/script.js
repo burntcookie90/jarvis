@@ -90,6 +90,7 @@ function playPause() {
 	_V_("mainvideo").ready(function()
 	{
 		var myPlayer = this;
+		
 		if(is_Playing == '1') {				
 	    	  myPlayer.play();						
 			$(".buttons_controls_play_pause").css({
