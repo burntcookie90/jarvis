@@ -436,6 +436,26 @@ var trackBarUpdate = function(){
 		percent = _V_("mainvideo").currentTime()/_V_("mainvideo").duration()*100 + '%';
 	}
 	trackBarProgress(percent);
+	
+	var timeInSec = _V_("mainvideo").currentTime();
+	var hours = _V_("mainvideo").currentTime()/3600;
+	hours = Math.round(hours);
+	var minutes = _V_("mainvideo").currentTime()/60;
+	minutes = Math.round(minutes);
+	var seconds = _V_("mainvideo").currentTime()%60;
+	seconds = Math.round(seconds);
+	if(seconds < 10)
+	{
+		seconds = '0'+ seconds;
+	}
+	if(minutes < 10)
+	{
+		minutes = '0'+ minutes;
+	}
+	
+	
+	
+	 document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">'+ hours + ':' + minutes + ':' + seconds+'</FONT>';
   };
   _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
