@@ -540,15 +540,33 @@ footer{
 }
 #container_controls{
 	overflow:hidden;
-	width: 300px;
+	width: 700px;
 	height: 100%;
 	position: relative;
 }
 
+.player_controls{
+	overflow:hidden;
+		width: 600px;
+	height: 54px;
+	position: relative;
+		
+}
 #media_select_songs{
 	left: 107px;
 	bottom: 54px;
 }
+
+.trackbar{
+	position: relative;
+	width: 100px;
+	height: 20px;
+	border: 3px;
+	solid #cccccc;
+	left:255px;
+	top: -146px;
+}
+
 #media_select_vids{
 	left: 214px;
 	bottom: 107px;

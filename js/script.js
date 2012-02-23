@@ -185,6 +185,9 @@ function musicGhostBar(div) {
 
 }
 
+
+
+
 function resizePanes(div) {
 	if($(div).attr("id") == "resize_left") {
 		rightPanelWidth = w / 4 * 3;
@@ -357,6 +360,14 @@ function setsizes() {
 		"height" : ((h - 240) / 4) - 50
 	})
 	
+	$('#container_controls').css({
+		"width" : w,
+	})
+	
+	$('.trackbar').css({
+		"width" : w*.7-146,
+	})
+	
 	var vidHeight = (rightPanelWidth-50)*9/16;
 	if(vidHeight<($("#rightpanel_top").height()))
 	{
@@ -396,6 +407,15 @@ function ajaxcall() {
 	});
 }
 
+var trackBarUpdate = function(){
+	var percent = '0%';
+	if(_V_("mainvideo").duration()>0)
+	{
+		percent = _V_("mainvideo").currentTime()/_V_("mainvideo").duration()*100 + '%';
+	}
+	document.getElementById('progress').getElementsByTagName('p')[0].style.width = percent;
+  };
+  _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
 $(window).resize(function() {
 	setsizes();
