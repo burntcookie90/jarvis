@@ -247,8 +247,18 @@ function resizePanes(div) {
 	$('.mediameta').css({
 		"width" : rightPanelWidth - 100
 	});
-	$("#mainvideo").width(rightPanelWidth);
-	$("#mainvideo").height(rightPanelWidth*9/16);
+	
+
+	var vidHeight = (rightPanelWidth-50)*9/16;
+	if(vidHeight<($("#rightpanel_top").height()))
+	{
+	_V_("mainvideo").size(rightPanelWidth-50,(vidHeight));
+	}
+	else
+	{
+		vidHeight = $("#rightpanel_top").height();
+	_V_("mainvideo").size(vidHeight*16/9,(vidHeight));
+	}
 }
 
 var size_state = '0';
@@ -347,8 +357,17 @@ function setsizes() {
 		"width" : rightPanelWidth - 100,
 		"height" : ((h - 240) / 4) - 50
 	})
-	$("#mainvideo").width(rightPanelWidth);
-	$("#mainvideo").height($("#main").height() - $("#rightpanel_bottom").height());
+	
+	var vidHeight = (rightPanelWidth-50)*9/16;
+	if(vidHeight<($("#rightpanel_top").height()))
+	{
+	_V_("mainvideo").size(rightPanelWidth-50,(vidHeight));
+	}
+	else
+	{
+		vidHeight = $("#rightpanel_top").height();
+	_V_("mainvideo").size(vidHeight*16/9,(vidHeight));
+	}
 
 }
 
