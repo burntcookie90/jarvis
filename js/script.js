@@ -104,36 +104,77 @@ function musicGhostBar(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		if(isGhostBarEnabled == '0') {
 			$("#media_select_level3").css({
-				"background-color" : "#262c32"
+				"background-color" : "#111111",
+				"visibility" : "visible"
 			});
-			
+
 			$("#music_artist").css({
-				"background-image" : "url(./css/img/artists.png)"
+				"background-image" : "url(./css/img/artists.png)",
+				"visibility" : "visible"
 			});
-			
+
 			$("#music_album").css({
-				"background-image" : "url(./css/img/albums.png)"
+				"background-image" : "url(./css/img/albums.png)",
+				"visibility" : "visible"
 			});
-			
+
 			$("#music_genre").css({
-				"background-image" : "url(./css/img/genres.png)"
+				"background-image" : "url(./css/img/genres.png)",
+				"visibility" : "visible"
 			});
-			
+
 			$("#music_songs").css({
-				"background-image" : "url(./css/img/songs.png)"
+				"background-image" : "url(./css/img/songs.png)",
+				"visibility" : "visible"
 			});
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
-		$("#media_select_level3").css({
-			"background-color" : "#111111"
-		});
-		isGhostBarEnabled = '0';
+		if(isGhostBarEnabled == '1') {
+			$("#media_select_level3").css({
+				"background-color" : "#111111"
+			});
+
+			$("#music_artist").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_album").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_genre").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_songs").css({
+				"visibility" : "hidden"
+			});
+			isGhostBarEnabled = '0';
+		}
 	} else if($(div).attr("id") == "media_select_vids") {
-		$("#media_select_level3").css({
-			"background-color" : "#111111"
-		});
-		isGhostBarEnabled = '0';
+		if(isGhostBarEnabled == '1') {
+			$("#media_select_level3").css({
+				"background-color" : "#111111"
+			});
+
+			$("#music_artist").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_album").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_genre").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_songs").css({
+				"visibility" : "hidden"
+			});
+			isGhostBarEnabled = '0';
+		}
 	}
 
 }
@@ -333,9 +374,7 @@ $(document).ready(function() {
 	init();
 	getJSONInfo();
 });
-
-function getJSONInfo()
-{
+function getJSONInfo() {
 	//localStorage.setItem("test", JSON.stringify(jsonObj));
 	var test = jsonObj.VIDEO.videos[0].vidname;
 	document.write(test);
@@ -343,19 +382,17 @@ function getJSONInfo()
 	json_intake(jsonObj);
 }
 
-
-
 /**
  * Processes JSON upon opening application.
  * It interprets the JSON and populates the application with media names and files
  */
-function json_intake(jsonObj){
+function json_intake(jsonObj) {
 	var numSongs = jsonObj.SONG.songs.length;
 	var numVideos = jsonObj.VIDEO.videos.length;
 	var numPics = jsonObj.IMAGES.images.length;
 	var sean = jsonObj.VIDEO.videos[0].vidname;
-	
-	if ( numSongs > 0){
-		
-	} 
+
+	if(numSongs > 0) {
+
+	}
 }

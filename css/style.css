@@ -430,24 +430,50 @@ header{
 	width:100px;
 	height:inherit;
 	position:relative;
+	visibility:hidden;
 }
 
 #music_album{
 	width:100px;
 	height:inherit;	
 	position:relative;
+	left:100px;
+	bottom:50px;
+	visibility:hidden;
 }
 
 #music_genre{
 	width:100px;
 	height:inherit;
 	position:relative;
+	left:200px;
+	bottom:100px;
+	visibility:hidden;
 }
 
 #music_songs{
 	width:100px;
 	height:inherit;
 	position:relative;
+	left:300px;
+	bottom:150px;
+	visibility:hidden;
+}
+
+.music_artist:hover{
+	background-color:#34b4e3	
+}
+
+.music_album:hover{
+	background-color:#34b4e3	
+}
+
+.music_genre:hover{
+	background-color:#34b4e3	
+}
+
+.music_songs:hover{
+	background-color:#34b4e3	
 }
 #jarvis_logo{
 	float:left;
