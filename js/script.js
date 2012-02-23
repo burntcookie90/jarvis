@@ -406,7 +406,16 @@ function ajaxcall() {
 		type : 'GET'
 	});
 }
-
+function seek(){
+	var x =  event.pageX;
+	var xOffset = $(".trackbar").offset().left;
+	xOffset = x-xOffset;
+	var xPercent = xOffset/parseInt(document.getElementById('progress').style.width);
+	_V_("mainvideo").currentTime(_V_("mainvideo").duration()*xPercent); 
+	_V_("mainvideo").play();
+	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (xPercent*100);
+	
+}
 var trackBarUpdate = function(){
 	var percent = '0%';
 	if(_V_("mainvideo").duration()>0)
