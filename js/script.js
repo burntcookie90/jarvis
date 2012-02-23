@@ -377,6 +377,10 @@ function setsizes() {
 		"left" : w*.6+146,
 	})
 	
+	$('.fullscreen').css({
+		"left" : w*.8+80,
+	})
+	
 	
 	
 	
@@ -436,6 +440,9 @@ function seek(){
 	
 }
 
+function fullscreen(){
+	_V_("mainvideo").requestFullScreen();
+}
 var isMuted = '0';
 var oldVolume = '0';
 
@@ -511,6 +518,10 @@ var trackBarUpdate = function(){
 		minutes = '0'+ minutes;
 	}
 	
+	$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/pause.png')"
+			});
+			is_Playing = '0';
 	
 	
 	 document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">'+ hours + ':' + minutes + ':' + seconds+'</FONT>';
