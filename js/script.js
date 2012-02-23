@@ -83,7 +83,7 @@ var json_success = {
 	}
 }
 
-
+jsonObj = json_success;
 
 function playPause() {
 	
@@ -111,24 +111,77 @@ function musicGhostBar(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		if(isGhostBarEnabled == '0') {
 			$("#media_select_level3").css({
-				"background-color" : "#262c32"
+				"background-color" : "#111111",
+				"visibility" : "visible"
 			});
-			
+
 			$("#music_artist").css({
-				"background-image" : "url(./css/img/artists.png)"
+				"background-image" : "url(./css/img/artists.png)",
+				"visibility" : "visible"
+			});
+
+			$("#music_album").css({
+				"background-image" : "url(./css/img/albums.png)",
+				"visibility" : "visible"
+			});
+
+			$("#music_genre").css({
+				"background-image" : "url(./css/img/genres.png)",
+				"visibility" : "visible"
+			});
+
+			$("#music_songs").css({
+				"background-image" : "url(./css/img/songs.png)",
+				"visibility" : "visible"
 			});
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
-		$("#media_select_level3").css({
-			"background-color" : "#111111"
-		});
-		isGhostBarEnabled = '0';
+		if(isGhostBarEnabled == '1') {
+			$("#media_select_level3").css({
+				"background-color" : "#111111"
+			});
+
+			$("#music_artist").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_album").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_genre").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_songs").css({
+				"visibility" : "hidden"
+			});
+			isGhostBarEnabled = '0';
+		}
 	} else if($(div).attr("id") == "media_select_vids") {
-		$("#media_select_level3").css({
-			"background-color" : "#111111"
-		});
-		isGhostBarEnabled = '0';
+		if(isGhostBarEnabled == '1') {
+			$("#media_select_level3").css({
+				"background-color" : "#111111"
+			});
+
+			$("#music_artist").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_album").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_genre").css({
+				"visibility" : "hidden"
+			});
+
+			$("#music_songs").css({
+				"visibility" : "hidden"
+			});
+			isGhostBarEnabled = '0';
+		}
 	}
 
 }
@@ -315,6 +368,8 @@ function ajaxcall() {
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
+			//test = jsonObj.VIDEO.videos[0].vidname;
+			//alert(test);
 		},
 		error : function(data) {
 			jsonObj = json_success;
@@ -330,31 +385,31 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
-	getJSONInfo();
+	storeJSON();
 });
 
-function getJSONInfo()
+/**
+ * stores the strigified JSON object into local storage
+ */
+function storeJSON()
 {
-	//localStorage.setItem("test", JSON.stringify(jsonObj));
-	var test = jsonObj.VIDEO.videos[0].vidname;
-	document.write(test);
-	//getJSONInfo();
+	// because local storage really only deals with strings, the JSON object must be stringified, 
+	// meaning it is now a long arrayof strings
+	localStorage.setItem("media", JSON.stringify(jsonObj));
 	json_intake(jsonObj);
 }
-
-
 
 /**
  * Processes JSON upon opening application.
  * It interprets the JSON and populates the application with media names and files
  */
-function json_intake(jsonObj){
+function json_intake(jsonObj) {
 	var numSongs = jsonObj.SONG.songs.length;
 	var numVideos = jsonObj.VIDEO.videos.length;
 	var numPics = jsonObj.IMAGES.images.length;
 	var sean = jsonObj.VIDEO.videos[0].vidname;
-	
-	if ( numSongs > 0){
-		
-	} 
+
+	if(numSongs > 0) {
+
+	}
 }
