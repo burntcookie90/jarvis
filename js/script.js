@@ -300,7 +300,7 @@ function init() {
 
 function ajaxcall() {
 	$.ajax({
-		url : '../php/json.php',
+		url : '../jarvis/php/json.php',
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
