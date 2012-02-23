@@ -417,13 +417,13 @@ header{
 	border: 3px;
 	solid #cccccc;
 	left:315px;
-	top: -166px;
+	top: -164px;
 }
 
 .play_time{
 	position: relative;
 	left : 255px;
-	top: -146px;
+	top: -144px;
 	width: 46px;
 	height: 20px;	
 }
@@ -434,7 +434,18 @@ header{
 	height: 20px;
 	border: 3px;
 	solid #cccccc;
-	left:1453px;
+	left:1406px;
+	top: -237px;
+}
+
+.volume_icon{
+	width: 80px;
+	height:53px;
+	position: relative;
+	background-color:#111111;
+	background-image: url(img/next.png);
+	border-style: none;
+	left:1321px;
 	top: -200px;
 }
 

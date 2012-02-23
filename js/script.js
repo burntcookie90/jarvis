@@ -365,8 +365,20 @@ function setsizes() {
 	})
 	
 	$('.trackbar').css({
-		"width" : w*.7-146,
+		"width" : w*.6-146,
 	})
+	
+	$('.volume').css({
+		"width" : w - w*.6-146 - w*.2,
+		"left" : w*.6+225,
+	})
+	
+	$('.volume_icon').css({
+		"left" : w*.6+146,
+	})
+	
+	
+	
 	
 	var vidHeight = (rightPanelWidth-50)*9/16;
 	if(vidHeight<($("#rightpanel_top").height()))
@@ -424,6 +436,52 @@ function seek(){
 	
 }
 
+var isMuted = '0';
+var oldVolume = '0';
+
+function changeVolume(){
+	//Get mouse X position
+	var x =  event.pageX;
+	//Get the offset of the trackbar
+	var xOffset = $(".volume").offset().left;
+	//Set the xOffset to the offset of the actual trackbar
+	xOffset = x-xOffset;
+	
+	//Create a percentage of progress on the bar
+	var xPercent = xOffset/parseInt(document.getElementById('volumeBar').style.width);
+	//Sets video to the play time
+	_V_("mainvideo").volume(xPercent); 
+	oldVolume = xPercent;
+	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((xPercent*100)+'%'));
+	$(".volume_icon").css({
+			"background-image" : "url('./css/img/next.png')"
+	});
+	
+}
+
+
+function mute(){
+	if(isMuted == '0')
+	{
+	$(".volume_icon").css({
+			"background-image" : "url('./css/img/play_hover.png')"
+		});
+	_V_("mainvideo").volume(0); 
+	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = ('0%');
+	isMuted = '1';
+	}
+	else
+	{
+		isMuted = '0';
+		$(".volume_icon").css({
+			"background-image" : "url('./css/img/next.png')"
+		});
+	_V_("mainvideo").volume(oldVolume); 
+	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((oldVolume*100)+'%'));
+	}
+}
+
+
 function trackBarProgress(percent)
 {
 	//Sets the trackbar to the current percentage;
@@ -439,11 +497,11 @@ var trackBarUpdate = function(){
 	
 	var timeInSec = _V_("mainvideo").currentTime();
 	var hours = _V_("mainvideo").currentTime()/3600;
-	hours = Math.round(hours);
+	hours = Math.round(hours-.5);
 	var minutes = _V_("mainvideo").currentTime()/60;
-	minutes = Math.round(minutes);
+	minutes = Math.round(minutes-.5);
 	var seconds = _V_("mainvideo").currentTime()%60;
-	seconds = Math.round(seconds);
+	seconds = Math.round(seconds-.5);
 	if(seconds < 10)
 	{
 		seconds = '0'+ seconds;
