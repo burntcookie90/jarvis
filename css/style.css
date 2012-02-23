@@ -450,8 +450,9 @@ header{
 	height:50px;
 }
 #media_select_level3{
-	width: 600px;
+	width: 400px;
 	height: inherit;
+	background-color: 111111;
 }
 #resize_buttons{
 	width:150px;
