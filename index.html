@@ -10,11 +10,11 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">   <!--video-js-->
 		<script src="http://vjs.zencdn.net/c/video.js"></script>				<!--//video-js-->
+	
 	</head>
 	<body class="bg1 nooverflow">
 		<div id="whiteout"></div>
 		<div id="fullscreen" >
-			
 		</div>
 		<div id="container" class="bg1">
 			<header class="bg1 paddingset">
@@ -30,10 +30,10 @@
 				</div>
 				<div id="media_select_level2" class="bg1">	<!--Ghost bar for music-->
 					<div id="media_select_level3" class="center">
-						<div id = "music_artist"></div>
-						<div id = "music_album"></div>
-						<div id = "music_genre"></div>
-						<div id = "music_songs"></div>
+						<div id = "music_artist" class="music_artist"></div>
+						<div id = "music_album" class="music_album"></div>
+						<div id = "music_genre" class="music_genre"></div>
+						<div id = "music_songs" class="music_songs"></div>
 					</div>					
 				</div>
 				<div id="resize_buttons" class="bg1">
@@ -53,9 +53,8 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-					
-						<video class="video-js vjs-default-skin" controls preload="auto" 
-						autoplay="true" width="100%" height="100%"
+						<video id="mainvideo" class="video-js vjs-default-skin"  preload="auto" 
+					 controls
 						  data-setup="{}">
 						  <source src="media/video/MeettheSpy.mp4" type='video/mp4'>						  
 						</video>
@@ -63,6 +62,12 @@
 					<div id="rightpanel_bottom" class="bg2 padding_5">
 						<!-- These will all need to be templates depending on media type -->
 						<div id="media_SONG" class="mediameta center_hor nooverflow center_ver text_color">
+						<script type="text/javascript">
+							media = JSON.parse(localStorage.getItem("media"));
+							document.write(media.VIDEO.videos[0].vidtitle);
+							document.write(media.VIDEO.videos[0].vidname);
+							document.write(media.VIDEO.videos[0].vidfolder);
+						</script>	
 							<div id="media_img" class="nooverflow">
 								Picture
 							</div>
@@ -87,11 +92,26 @@
 				</div>
 			</div>
 			<footer class="bg4 paddingset">
+				
 				<div id="container_controls" class="bg1">
 					<div id="prev_img" class="buttons_controls_prev"></div>
 					<div id="play_pause_img" onclick= "playPause()" class="buttons_controls_play_pause bg2 "></div>
 					<div id="next_img" class="buttons_controls_next bg2" onclick="testJSON()"></div>
+							<div id="play_time_bar" class= "play_time bg2">	
+								<FONT COLOR="FFFFFF">0:00:00</FONT>;
+					</div>
+					<div id="progress"  onclick= "seek()" class = "trackbar bg2">
+  						 <p style="position: absolute; left: 0; top: 0; background-color: #0000ff; height: 100%; font-size: 0px;">&nbsp;</p>
+					</div>
+					<div id="volumeIcon"  onclick = "mute()" class="volume_icon bg2 "></div>
+					<div id="volumeBar"  onclick= "changeVolume()" class = "volume bg2">
+  						 <p style="position: absolute; left: 0; top: 0; background-color: #0000ff; height: 100%; font-size: 0px;">&nbsp;</p>
+					</div>
+					<div id="fullscreenIcon"  onclick = "fullscreen()" class="fullscreen bg2 "></div>
 				</div>
+					
+				</div>
+				
 			</footer>
 		</div>
 		<script src="js/libs/jquery-1.6.2.min.js"></script>

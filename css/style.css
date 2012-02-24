@@ -409,6 +409,60 @@ header{
 .buttons_controls_next:hover{
 	background-image: url(img/next_hover.png);
 }
+
+.trackbar{
+	position: relative;
+	width: 100px;
+	height: 20px;
+	border: 3px;
+	solid #cccccc;
+	left:315px;
+	top: -164px;
+}
+
+.play_time{
+	position: relative;
+	left : 255px;
+	top: -144px;
+	width: 46px;
+	height: 20px;	
+}
+
+.volume{
+	position: relative;
+	width: 100px;
+	height: 20px;
+	border: 3px;
+	solid #cccccc;
+	top: -237px;
+}
+
+.fullscreen{
+	width: 80px;
+	height:53px;
+	position: relative;
+	background-color:#111111;
+	background-image: url(img/fullscreen.png);
+	border-style: none;
+	top: -273px;
+}
+
+.fullscreen:hover{
+	background-image: url(img/fullscreen_hover.png);
+	background-color: #34B4E3;
+}
+
+.volume_icon{
+	width: 80px;
+	height:53px;
+	position: relative;
+	background-color:#111111;
+	background-image: url(img/sound.png);
+	border-style: none;
+	left:1321px;
+	top: -200px;
+}
+
 .float_l{
 	float: left;
 }
@@ -427,19 +481,57 @@ header{
 }
 
 #music_artist{
-	
+	width:100px;
+	height:inherit;
+	position:relative;
+	visibility:hidden;
 }
 
 #music_album{
-	
+	width:100px;
+	height:inherit;	
+	position:relative;
+	left:100px;
+	bottom:50px;
+	visibility:hidden;
 }
 
 #music_genre{
-	
+	width:100px;
+	height:inherit;
+	position:relative;
+	left:200px;
+	bottom:100px;
+	visibility:hidden;
 }
 
 #music_songs{
-	
+	width:100px;
+	height:inherit;
+	position:relative;
+	left:300px;
+	bottom:150px;
+	visibility:hidden;
+}
+
+.music_artist:hover{
+/*	background-color:#34b4e3;*/
+/*	background-image: url(img/artists_hover.png)*/
+}
+
+.music_album:hover{
+/*	background-color:#34b4e3	*/
+/*	background-image: url(img/albums_hover.png)*/
+}
+
+.music_genre:hover{
+/*	background-color:#34b4e3	*/
+/*	background-image: url(img/genre_hover.png)*/
+}
+
+.music_songs:hover{
+/*	background-color:#34b4e3	*/
+/*	background-image: url(img/songs_hover.png)*/
 }
 #jarvis_logo{
 	float:left;
@@ -502,15 +594,24 @@ footer{
 }
 #container_controls{
 	overflow:hidden;
-	width: 300px;
+	width: 700px;
 	height: 100%;
 	position: relative;
 }
 
+.player_controls{
+	overflow:hidden;
+		width: 600px;
+	height: 54px;
+	position: relative;
+		
+}
 #media_select_songs{
 	left: 107px;
 	bottom: 54px;
 }
+
+
 #media_select_vids{
 	left: 214px;
 	bottom: 107px;
