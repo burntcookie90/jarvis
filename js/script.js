@@ -439,7 +439,7 @@ function setsizes() {
 	})
 	
 	$('.fullscreen').css({
-		"left" : w*.8+80,
+		"left" : w*.8+100,
 	})
 	
 	
