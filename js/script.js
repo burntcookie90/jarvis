@@ -292,11 +292,7 @@ function hidestuff(boxid) {
 	document.getElementById(boxid).style.visibility = "hidden";
 }
 
-function init() {
-	setsizes();
-	ajaxcall();
-	hidestuff("whiteout");
-}
+
 
 function ajaxcall() {
 	$.ajax({
@@ -312,14 +308,21 @@ function ajaxcall() {
 	});
 }
 
-
+function init() {
+	jsonObj = json_success;
+	setsizes();
+	ajaxcall();
+	hidestuff("whiteout");
+	var jo = jsonObj;
+	getJSONInfo();
+}
 $(window).resize(function() {
 	setsizes();
 });
 
 $(document).ready(function() {
 	init();
-	getJSONInfo();
+	
 });
 
 function getJSONInfo()
@@ -327,7 +330,7 @@ function getJSONInfo()
 	//localStorage.setItem("test", JSON.stringify(jsonObj));
 	var test = jsonObj.VIDEO.videos[0].vidname;
 	document.write(test);
-	//getJSONInfo();
+
 	json_intake(jsonObj);
 }
 
