@@ -299,9 +299,7 @@ td { vertical-align: top; }
 	width: inherit;
 	height: 98%;
 }
-#main_leftpanel ul{
-	list-style-type: none;
-}
+
 .bg1{
 	background: #111111;
 }
@@ -552,6 +550,12 @@ header{
 	width: 500px;
 	height: inherit;
 }
+#main_leftpanel ul{
+	list-style-type: none;
+}
+#main_leftpanel a h1 p{
+	margin: 0px;
+}
 
 #media_select_level2{
 	width:100%;
@@ -640,10 +644,6 @@ footer{
 #rightpanel_bottom{
 	height: 90px;
 }
-/*img{
-	background: black;
-	border : black;
-}*/
 
 
 

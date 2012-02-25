@@ -552,7 +552,7 @@ function init() {
 	ajaxcall();
 	hidestuff("whiteout");
 	var jo = jsonObj;
-	getJSONInfo();
+	
 }
 
 function trackBarProgress(percent)
