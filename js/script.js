@@ -519,7 +519,7 @@ function init() {
 	ajaxcall();
 	hidestuff("whiteout");
 	var jo = jsonObj;
-	dbinit();
+	//dbinit();
 }
 
 function trackBarProgress(percent) {
