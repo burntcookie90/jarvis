@@ -16,7 +16,7 @@ jarvis.webdb.createTable = function() {
 		tx.executeSql("DROP TABLE videos", []);
 		tx.executeSql("DROP TABLE images", []);
 		tx.executeSql("DROP TABLE playlists", []);
-		tx.executeSql("CREATE TABLE IF NOT EXISTS songs (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), artist VARCHAR(255), album VARCHAR(255), image VARCHAR(255), genre VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
+		tx.executeSql("CREATE TABLE songs (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), artist VARCHAR(255), album VARCHAR(255), image VARCHAR(255), genre VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS videos (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS images (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS playlists (PLID INTEGER PRIMARY KEY ASC, ID_FK INTEGER, PLName VARCHAR(255), mediatype VARCHAR(255), added_on DATETIME)", []);
