@@ -23,9 +23,9 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						<div id="media_select_img" onclick="musicGhostBar(this)" class="buttons_media_pics bg2 marginset"></div>
-						<div id="media_select_songs" onclick="musicGhostBar(this)" class="buttons_media_music bg2 marginset"></div>
-						<div id="media_select_vids" onclick="musicGhostBar(this)" class="buttons_media_vids bg2 marginset"></div>
+						<div id="media_select_img" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_songs" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_vids" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
 					</div>
 				</div>
 				<div id="media_select_level2" class="bg1">
@@ -53,10 +53,25 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-						<video id="mainvideo" class="video-js vjs-default-skin"  preload="auto"
+
+						<form id="video" hidden="false">
+						<video id="mainvideo" class="video-js vjs-default-skin"  preload
 						data-setup="{}">
 							<source src="media/video/MeettheSpy.mp4" type='video/mp4'>
 						</video>
+						</form>
+						
+						<!--<form id="song" hidden="true">-->
+						<audio autoplay="true"
+						 src="media/song/NiggasInParis.mp3" type="audio/mp3" >
+						</audio>
+					    <!--</form>--> 
+						
+						<!--
+						<form id="picture" hidden="true">
+						</form>
+						-->
+						
 					</div>
 					<div id="rightpanel_bottom" class="bg2 padding_5">
 						<!-- These will all need to be templates depending on media type -->
