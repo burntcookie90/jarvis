@@ -31,10 +31,10 @@
 				<div id="media_select_level2" class="bg1">
 					<!--Ghost bar for music-->
 					<div id="media_select_level3" class="center">
-						<div id = "music_artist" class="music_artist"></div>
-						<div id = "music_album" class="music_album"></div>
-						<div id = "music_genre" class="music_genre"></div>
-						<div id = "music_songs" class="music_songs"></div>
+						<div id = "music_artist" class="music_artist" onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','artist')"></div>
+						<div id = "music_album" class="music_album"  onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','album')"></div>
+						<div id = "music_genre" class="music_genre"  onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','genre')"></div>
+						<div id = "music_songs" class="music_songs"  onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','title')"></div>
 					</div>
 				</div>
 				<div id="resize_buttons" class="bg1">
@@ -43,21 +43,11 @@
 					<div id="resize_left" onclick="resizePanes(this)" class="float_r"></div>
 				</div>
 			</header>
-			<div id="main" class="bg3">
-				<div id="main_leftpanel" class="bg2 float_l overflow_hidden text_color ">
-					<ul>
-						<li>
-							<a href="www.google.com">
-								<h1>google</h1>
-								<p>Artist Lorem Ipsum Lorem Ipsum</p>
-							</a>
-						</li>
-						<li>
-							<a href="www.msn.com">
-								<h1>msn</h1>
-								<p>Artist Lorem Ipsum Lorem Ipsum</p>
-							</a>
-						</li>
+		<!-- GENRE ARTIST ALBUM SONGS -->
+			<div id="main" class="bg3 nooverflow">
+				<div id="main_leftpanel" class="bg2 float_l overflow_hidden text_color">
+					<ul id="main_leftpanel_list">
+						
 					</ul>
 				</div>
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
@@ -128,6 +118,7 @@
 		</div> <script src="js/libs/jquery-1.6.2.min.js"></script>
 		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 		<script src="js/plugins.js"></script>
+		<script src="js/db.js"></script>
 		<script src="js/script.js"></script>
 	</body>
 </html>

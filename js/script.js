@@ -1,6 +1,6 @@
 /* Author: TEAM JARVIS
 
-*/
+ */
 var jsonObj;
 var is_Playing = '1';
 var resize_pane_selected = '1';
@@ -9,105 +9,87 @@ var w = $(window).width();
 var rightPanelWidth = w / 2;
 var leftPanelWidth = w / 2;
 var json_fail = {
-	'SONG' : 'FAIL',
+	'SONG' : 'null',
 	'VIDEO' : 'null',
 	'IMAGES' : 'null'
 };
 var json_success = {
 	"SONG" : {
 		"url-base" : "../media/song/",
-		"songcount" : "2",
+		"count" : "2",
 		"songs" : [{
-			"songid" : "1",
-			"songplaylist" : [{
-				"name" : "80s"
-			}, {
-				"name" : "rock"
-			}],
-			"songtype" : ".mp3",
-			"songtitle" : "Bitter Sweet Symphony",
-			"songfolder" : "mysongs",
-			"songalbum" : "null",
-			"songartist" : "The Verve",
-			"songalbumimg" : "null"
+			"ID" : "1",
+			"genre" : "Alternative Rock",
+			"type" : "mp3",
+			"title" : "Bitter Sweet Symphony",
+			"album" : "ZAlbum",
+			"artist" : "The Verve"
 		}, {
-			"songid" : "2",
-			"songplaylist" : [{
-				"name" : "rock"
-			}],
-			"songtype" : ".mp3",
-			"songtitle" : "Ordinary World",
-			"songfolder" : "mysongs",
-			"songalbum" : "Purple",
-			"songartist" : "Stone Temple Pilots",
-			"songalbumimg" : "null"
+			"ID" : "2",
+			"genre" : "rock",
+			"type" : "mp3",
+			"title" : "Ordinary World",
+			"album" : "Purple",
+			"artist" : "Stone Temple Pilots"
 		}]
 	},
 	"VIDEO" : {
 		"url-base" : "../media/video/",
-		"vidcount" : "2",
+		"count" : "2",
 		"videos" : [{
-			"vidname" : "1",
-			"songplaylist" : [{
-				"name" : "vacation trip"
-			}],
-			"vidtype" : ".mp4",
-			"vidtitle" : "getting home",
-			"vidfolder" : "vacation2011"
+			"ID" : "1",
+			"type" : "mp4",
+			"title" : "getting home",
 		}, {
-			"vidname" : "2",
-			"songplaylist" : [{
-				"name" : "vacation trip"
-			}],
-			"vidtype" : ".mp4",
-			"vidtitle" : "getting home",
-			"vidfolder" : "vacation2011"
+			"ID" : "2",
+			"type" : "mp4",
+			"title" : "getting home",
 		}]
 	},
 	"IMAGES" : {
 		"url-base" : "../media/img/",
-		"imgcount" : "3",
+		"count" : "3",
 		"images" : [{
-			"imgname" : "newcar",
-			"imgtype" : ".jpg",
-			"imgfolder" : "cars"
+			"ID" : "2",
+			"type" : "jpg",
+			"title" : "newcar",
 		}, {
-			"imgname" : "newcar2",
-			"imgtype" : ".jpg",
-			"imgfolder" : "cars"
+			"ID" : "3",
+			"type" : "jpg",
+			"title" : "newcar2",
 		}, {
-			"imgname" : "newcar3",
-			"imgtype" : ".jpg",
-			"imgfolder" : "cars"
+			"ID" : "4",
+			"type" : "jpg",
+			"title" : "newcar3",
 		}]
 	}
 }
 
 function playPause() {
-	
-	_V_("mainvideo").ready(function()
-	{
+
+	_V_("mainvideo").ready(function() {
 		var myPlayer = this;
-		
-		if(is_Playing == '1') {				
-	    	  myPlayer.play();						
+
+		if(is_Playing == '1') {
+			myPlayer.play();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/pause.png')"
 			});
 			is_Playing = '0';
-		} else {			
-			myPlayer.pause();			
+		} else {
+			myPlayer.pause();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/play.png')"
 			});
 			is_Playing = '1';
-		}		
+		}
 	});
 };
 
-var isGhostBarEnabled = '0'
+var isGhostBarEnabled = '0';
 function musicGhostBar(div) {
 	if($(div).attr("id") == "media_select_songs") {
+		jarvis.webdb.getMedia(loadMedia,"songs");
 		if(isGhostBarEnabled == '0') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
@@ -136,6 +118,7 @@ function musicGhostBar(div) {
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
+		jarvis.webdb.getMedia(loadMedia,"images");
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -159,6 +142,7 @@ function musicGhostBar(div) {
 			isGhostBarEnabled = '0';
 		}
 	} else if($(div).attr("id") == "media_select_vids") {
+		jarvis.webdb.getMedia(loadMedia,"videos");
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -191,14 +175,14 @@ $(".music_artist").mouseover(function() {
 			"background-image" : "url('./css/img/artists_hover.png')",
 			"background-color" : "#34b4e3"
 		});
-	} 
+	}
 }).mouseout(function() {
 	if(isGhostBarEnabled == '1') {
 		$(".music_artist").css({
 			"background-image" : "url('./css/img/artists.png')",
 			"background-color" : "#111111"
 		});
-	} 
+	}
 });
 
 $(".music_album").mouseover(function() {
@@ -207,14 +191,14 @@ $(".music_album").mouseover(function() {
 			"background-image" : "url('./css/img/albums_hover.png')",
 			"background-color" : "#34b4e3"
 		});
-	} 
+	}
 }).mouseout(function() {
 	if(isGhostBarEnabled == '1') {
 		$(".music_album").css({
 			"background-image" : "url('./css/img/albums.png')",
 			"background-color" : "#111111"
 		});
-	} 
+	}
 });
 
 $(".music_genre").mouseover(function() {
@@ -223,14 +207,14 @@ $(".music_genre").mouseover(function() {
 			"background-image" : "url('./css/img/genres_hover.png')",
 			"background-color" : "#34b4e3"
 		});
-	} 
+	}
 }).mouseout(function() {
 	if(isGhostBarEnabled == '1') {
 		$(".music_genre").css({
 			"background-image" : "url('./css/img/genres.png')",
 			"background-color" : "#111111"
 		});
-	} 
+	}
 });
 
 $(".music_songs").mouseover(function() {
@@ -239,16 +223,15 @@ $(".music_songs").mouseover(function() {
 			"background-image" : "url('./css/img/songs_hover.png')",
 			"background-color" : "#34b4e3"
 		});
-	} 
+	}
 }).mouseout(function() {
 	if(isGhostBarEnabled == '1') {
 		$(".music_songs").css({
 			"background-image" : "url('./css/img/songs.png')",
 			"background-color" : "#111111"
 		});
-	} 
+	}
 });
-
 function resizePanes(div) {
 	if($(div).attr("id") == "resize_left") {
 		rightPanelWidth = w / 4 * 3;
@@ -302,7 +285,7 @@ function resizePanes(div) {
 	});
 	$('#rightpanel_top').css({
 		"width" : rightPanelWidth,
-		
+
 	});
 	$('#main_leftpanel').css({
 		"width" : leftPanelWidth - 10
@@ -310,17 +293,13 @@ function resizePanes(div) {
 	$('.mediameta').css({
 		"width" : rightPanelWidth - 100
 	});
-	
 
-	var vidHeight = (rightPanelWidth-50)*9/16;
-	if(vidHeight<($("#rightpanel_top").height()))
-	{
-	_V_("mainvideo").size(rightPanelWidth-50,(vidHeight));
-	}
-	else
-	{
+	var vidHeight = (rightPanelWidth - 50) * 9 / 16;
+	if(vidHeight < ($("#rightpanel_top").height())) {
+		_V_("mainvideo").size(rightPanelWidth - 50, (vidHeight));
+	} else {
 		vidHeight = $("#rightpanel_top").height();
-	_V_("mainvideo").size(vidHeight*16/9,(vidHeight));
+		_V_("mainvideo").size(vidHeight * 16 / 9, (vidHeight));
 	}
 }
 
@@ -414,46 +393,39 @@ function setsizes() {
 	})
 	$('#rightpanel_top').css({
 		"width" : rightPanelWidth,
-		"height" : $("#main").height() - $("#rightpanel_bottom").height()
+		"height" : $("#main").height() - $("#rightpanel_bottom").height() - 15
 	})
 	$('.mediameta').css({
-		"width" : rightPanelWidth - 100,
-		"height" : ((h - 240) / 4) - 50
+		"width" : rightPanelWidth - 100
 	})
-	
+
 	$('#container_controls').css({
 		"width" : w,
 	})
-	
+
 	$('.trackbar').css({
-		"width" : w*.6-146,
+		"width" : w * .6 - 146,
 	})
-	
+
 	$('.volume').css({
-		"width" : w - w*.6-146 - w*.2,
-		"left" : w*.6+225,
+		"width" : w - w * .6 - 146 - w * .2,
+		"left" : w * .6 + 225,
 	})
-	
+
 	$('.volume_icon').css({
-		"left" : w*.6+146,
+		"left" : w * .6 + 146,
 	})
-	
+
 	$('.fullscreen').css({
-		"left" : w*.8+100,
+		"left" : w * .8 + 100,
 	})
-	
-	
-	
-	
-	var vidHeight = (rightPanelWidth-50)*9/16;
-	if(vidHeight<($("#rightpanel_top").height()))
-	{
-	_V_("mainvideo").size(rightPanelWidth-50,(vidHeight));
-	}
-	else
-	{
+
+	var vidHeight = (rightPanelWidth - 50) * 9 / 16;
+	if(vidHeight < ($("#rightpanel_top").height())) {
+		_V_("mainvideo").size(rightPanelWidth - 50, (vidHeight));
+	} else {
 		vidHeight = $("#rightpanel_top").height();
-	_V_("mainvideo").size(vidHeight*16/9,(vidHeight));
+		_V_("mainvideo").size(vidHeight * 16 / 9, (vidHeight));
 	}
 
 }
@@ -461,8 +433,6 @@ function setsizes() {
 function hidestuff(boxid) {
 	document.getElementById(boxid).style.visibility = "hidden";
 }
-
-
 
 function ajaxcall() {
 	$.ajax({
@@ -479,72 +449,69 @@ function ajaxcall() {
 		type : 'GET'
 	});
 }
-function seek(){
+
+function seek() {
 	//Get mouse X position
-	var x =  event.pageX;
+	var x = event.pageX;
 	//Get the offset of the trackbar
 	var xOffset = $(".trackbar").offset().left;
 	//Set the xOffset to the offset of the actual trackbar
-	xOffset = x-xOffset;
+	xOffset = x - xOffset;
 	//Create a percentage of progress on the bar
-	var xPercent = xOffset/parseInt(document.getElementById('progress').style.width);
+	var xPercent = xOffset / parseInt(document.getElementById('progress').style.width);
 	//Sets video to the play time
-	_V_("mainvideo").currentTime(_V_("mainvideo").duration()*xPercent); 
+	_V_("mainvideo").currentTime(_V_("mainvideo").duration() * xPercent);
 	_V_("mainvideo").play();
 	_V_("mainvideo").pause();
 	_V_("mainvideo").play();
-	trackBarProgress(xPercent*100);
-	
+	trackBarProgress(xPercent * 100);
+
 }
 
-function fullscreen(){
+function fullscreen() {
 	_V_("mainvideo").requestFullScreen();
 }
+
 var isMuted = '0';
 var oldVolume = '0';
 
-function changeVolume(){
+function changeVolume() {
 	//Get mouse X position
-	var x =  event.pageX;
+	var x = event.pageX;
 	//Get the offset of the trackbar
 	var xOffset = $(".volume").offset().left;
 	//Set the xOffset to the offset of the actual trackbar
-	xOffset = x-xOffset;
-	
+	xOffset = x - xOffset;
+
 	//Create a percentage of progress on the bar
-	var xPercent = xOffset/parseInt(document.getElementById('volumeBar').style.width);
+	var xPercent = xOffset / parseInt(document.getElementById('volumeBar').style.width);
 	//Sets video to the play time
-	_V_("mainvideo").volume(xPercent); 
+	_V_("mainvideo").volume(xPercent);
 	oldVolume = xPercent;
-	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((xPercent*100)+'%'));
+	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((xPercent * 100) + '%'));
 	$(".volume_icon").css({
-			"background-image" : "url('./css/img/sound.png')"
+		"background-image" : "url('./css/img/sound.png')"
 	});
-	
+
 }
 
-
-function mute(){
-	if(isMuted == '0')
-	{
-	$(".volume_icon").css({
+function mute() {
+	if(isMuted == '0') {
+		$(".volume_icon").css({
 			"background-image" : "url('./css/img/muted.png')"
 		});
-	_V_("mainvideo").volume(0); 
-	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = ('0%');
-	isMuted = '1';
-	}
-	else
-	{
+		_V_("mainvideo").volume(0);
+		document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = ('0%');
+		isMuted = '1';
+	} else {
 		isMuted = '0';
 		$(".volume_icon").css({
 			"background-image" : "url('./css/img/sound.png')"
 		});
-	_V_("mainvideo").volume(oldVolume); 
-	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((oldVolume*100)+'%'));
+		_V_("mainvideo").volume(oldVolume);
+		document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((oldVolume * 100) + '%'));
 	}
 }
-
 
 function init() {
 	jsonObj = json_success;
@@ -552,48 +519,43 @@ function init() {
 	ajaxcall();
 	hidestuff("whiteout");
 	var jo = jsonObj;
-	
+	dbinit();
 }
 
-function trackBarProgress(percent)
-{
+function trackBarProgress(percent) {
 	//Sets the trackbar to the current percentage;
 	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (percent);
 }
-var trackBarUpdate = function(){
+
+var trackBarUpdate = function() {
 	var percent = '0%';
-	if(_V_("mainvideo").duration()>0)
-	{
-		percent = _V_("mainvideo").currentTime()/_V_("mainvideo").duration()*100 + '%';
+	if(_V_("mainvideo").duration() > 0) {
+		percent = _V_("mainvideo").currentTime() / _V_("mainvideo").duration() * 100 + '%';
 	}
 	trackBarProgress(percent);
-	
-	var timeInSec = _V_("mainvideo").currentTime();
-	var hours = _V_("mainvideo").currentTime()/3600;
-	hours = Math.round(hours-.5);
-	var minutes = _V_("mainvideo").currentTime()/60;
-	minutes = Math.round(minutes-.5);
-	var seconds = _V_("mainvideo").currentTime()%60;
-	seconds = Math.round(seconds-.5);
-	if(seconds < 10)
-	{
-		seconds = '0'+ seconds;
-	}
-	if(minutes < 10)
-	{
-		minutes = '0'+ minutes;
-	}
-	
-	$(".buttons_controls_play_pause").css({
-				"background-image" : "url('./css/img/pause.png')"
-			});
-			is_Playing = '0';
-	
-	
-	 document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">'+ hours + ':' + minutes + ':' + seconds+'</FONT>';
-  };
-  _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
+	var timeInSec = _V_("mainvideo").currentTime();
+	var hours = _V_("mainvideo").currentTime() / 3600;
+	hours = Math.round(hours - .5);
+	var minutes = _V_("mainvideo").currentTime() / 60;
+	minutes = Math.round(minutes - .5);
+	var seconds = _V_("mainvideo").currentTime() % 60;
+	seconds = Math.round(seconds - .5);
+	if(seconds < 10) {
+		seconds = '0' + seconds;
+	}
+	if(minutes < 10) {
+		minutes = '0' + minutes;
+	}
+
+	$(".buttons_controls_play_pause").css({
+		"background-image" : "url('./css/img/pause.png')"
+	});
+	is_Playing = '0';
+
+	document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">' + hours + ':' + minutes + ':' + seconds + '</FONT>';
+};
+_V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
 $(window).resize(function() {
 	setsizes();
@@ -603,24 +565,6 @@ $(document).ready(function() {
 	init();
 
 });
-
-/**
- * stores the strigified JSON object into local storage
- *
-function storeJSON()
-{
-<<<<<<< HEAD
-	//localStorage.setItem("test", JSON.stringify(jsonObj));
-	var test = jsonObj.VIDEO.videos[0].vidname;
-	document.write(test);
-=======
-	// because local storage really only deals with strings, the JSON object must be stringified, 
-	// meaning it is now a long arrayof strings
->>>>>>> d0ef99918c02f6306178fcdfcf7900bb4d834824
-
-	json_intake(jsonObj);
-}
-*/
 /**
  * Processes JSON upon opening application.
  * It interprets the JSON and populates the application with media names and files
