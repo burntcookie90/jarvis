@@ -23,9 +23,9 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						<div id="media_select_img" onclick="musicGhostBar(this);music_video_img(this)" class="buttons_media_pics bg2 marginset"></div>
-						<div id="media_select_songs" onclick="musicGhostBar(this);music_video_img(this)" class="buttons_media_music bg2 marginset"></div>
-						<div id="media_select_vids" onclick="musicGhostBar(this);music_video_img(this)" class="buttons_media_vids bg2 marginset"></div>
+						<div id="media_select_img" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_songs" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_vids" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
 					</div>
 				</div>
 				<div id="media_select_level2" class="bg1">
@@ -54,12 +54,12 @@
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
 
-						<!--<form id="video" hidden="false">-->
+						<form id="video" hidden="false">
 						<video id="mainvideo" class="video-js vjs-default-skin"  preload
 						data-setup="{}">
 							<source src="media/video/MeettheSpy.mp4" type='video/mp4'>
 						</video>
-						<!--</form>-->
+						</form>
 						
 						<!--<form id="song" hidden="true">-->
 						<audio autoplay="true"
