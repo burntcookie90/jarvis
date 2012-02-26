@@ -65,6 +65,13 @@ var json_success = {
 	}
 }
 
+// DEFAULT JSON OBJECT IN CASE OF FAILURE
+var json_default = {
+	'SONG' : 'default',
+	'VIDEO' : 'default',
+	'IMAGES' : 'default'
+};
+
 function playPause() {
 
 	_V_("mainvideo").ready(function() {
@@ -441,7 +448,7 @@ function ajaxcall() {
 		success : function(data) {
 			jsonObj = json_success;
 			// store the media information into localstorage
-			//localStorage.setItem("media", JSON.stringify(jsonObj));
+			localStorage.setItem("media", JSON.stringify(jsonObj));
 		},
 		error : function(data) {
 			jsonObj = json_success;
@@ -516,6 +523,7 @@ function mute() {
 function init() {
 	jsonObj = json_success;
 	setsizes();
+	localStorage.setItem("media", JSON.stringify(json_default));
 	ajaxcall();
 	hidestuff("whiteout");
 	var jo = jsonObj;
