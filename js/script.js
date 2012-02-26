@@ -578,4 +578,23 @@ function json_intake(jsonObj) {
 	if(numSongs > 0) {
 
 	}
+	
+	
+function music_video_img(div){
+		if($(div).attr("id") == "media_select_songs"){
+			
+		alert("it got to songs");
+				
+		}else if($(div).attr("id") == "media_select_vids") {
+	
+		object= document.forms['video'];
+			object.elements["hidden"].value="false";
+			alert("it got to vids");
+	
+		}
+		else if($(div).attr("id") == "media_select_img") {
+			
+			alert("it got to img");
+		}
+	}
 }
