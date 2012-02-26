@@ -587,3 +587,25 @@ function json_intake(jsonObj) {
 
 	}
 }
+	
+function music_video_img(div){
+		alert("it got here");
+		if($(div).attr("id") == "media_select_songs"){
+			
+		alert("it got to songs");
+				
+		}else if($(div).attr("id") == "media_select_vids") {
+			
+		alert("it got to vids");
+	
+		object= document.forms['video'];		
+		alert("it got to the middle");
+		object.elements["hidden"].value="false";
+		alert("it got to the end");
+			
+		}
+		else if($(div).attr("id") == "media_select_img") {
+			
+			alert("it got to img");
+		}
+	}
