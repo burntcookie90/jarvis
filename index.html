@@ -53,11 +53,24 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-						<video id="mainvideo" class="video-js vjs-default-skin"  preload="auto"
+						<video id="mainvideo" class="video-js vjs-default-skin"  preload
 						controls
 						data-setup="{}">
 							<source src="media/video/MeettheSpy.mp4" type='video/mp4'>
 						</video>
+						
+						<OBJECT id="VIDEO" width="320" height="240" 
+						style="position:absolute; left:0;top:0;"
+						CLASSID="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"
+						type="application/x-oleobject">
+						
+						<PARAM NAME="URL" VALUE="media/song/NiggasInParis.mp4">
+						<PARAM NAME="SendPlayStateChangeEvents" VALUE="True">
+						<PARAM NAME="AutoStart" VALUE="True">
+						<PARAM name="uiMode" value="full">
+						<PARAM name="PlayCount" value="9999">
+						</OBJECT>
+						
 					</div>
 					<div id="rightpanel_bottom" class="bg2 padding_5">
 						<!-- These will all need to be templates depending on media type -->
