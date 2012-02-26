@@ -441,7 +441,7 @@ function ajaxcall() {
 		success : function(data) {
 			jsonObj = json_success;
 			// store the media information into localstorage
-			localStorage.setItem("media", JSON.stringify(jsonObj));
+			//localStorage.setItem("media", JSON.stringify(jsonObj));
 		},
 		error : function(data) {
 			jsonObj = json_success;
