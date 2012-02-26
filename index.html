@@ -53,9 +53,9 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
+
 						<!--<form id="video" hidden="false">-->
-						<video id="mainvideo" hidden="true" class="video-js vjs-default-skin"  preload
-						controls
+						<video id="mainvideo" class="video-js vjs-default-skin"  preload
 						data-setup="{}">
 							<source src="media/video/MeettheSpy.mp4" type='video/mp4'>
 						</video>
@@ -99,17 +99,17 @@
 					<div id="prev_img" class="buttons_controls_prev"></div>
 					<div id="play_pause_img" onclick= "playPause()" class="buttons_controls_play_pause bg2 "></div>
 					<div id="next_img" class="buttons_controls_next bg2" onclick="testJSON()"></div>
-					<div id="play_time_bar" class= "play_time bg2">
-						<FONT COLOR="FFFFFF">0:00:00</FONT>;
+					<div id="play_time_bar" class= "play_time bg1">
+						<FONT COLOR="262c32">0:00:00</FONT>;
 					</div>
 					<div id="progress"  onclick= "seek()" class = "trackbar bg2">
-						<p style="position: absolute; left: 0; top: 0; background-color: #0000ff; height: 100%; font-size: 0px;">
+						<p style="position: absolute; left: 0; top: 0; background-color: #34b4e3; height: 100%; font-size: 0px;">
 							&nbsp;
 						</p>
 					</div>
-					<div id="volumeIcon"  onclick = "mute()" class="volume_icon bg2 "></div>
-					<div id="volumeBar"  onclick= "changeVolume()" class = "volume bg2">
-						<p style="position: absolute; left: 0; top: 0; background-color: #0000ff; height: 100%; font-size: 0px;">
+					<div id="volumeIcon"  onclick = "mute()" class="volume_icon bg2"></div>
+					<div id="volumeBar"  onclick= "changeVolume()" class = "volume">
+						<p style="position: absolute; left: 0; top: 0; background-color: #34b4e3; height: 100%; font-size: 0px;">
 							&nbsp;
 						</p>
 					</div>
