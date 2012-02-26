@@ -72,6 +72,8 @@ var json_default = {
 	'IMAGES' : 'default'
 };
 
+
+
 function playPause() {
 
 	_V_("mainvideo").ready(function() {
@@ -571,6 +573,13 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
+	// Spacebar eventlistener
+	$(document).keyup(function() {
+		if(event.keyCode==32)
+			// alert('Handler for .keyup() called.');
+			playPause();
+	  
+	});
 
 });
 /**
