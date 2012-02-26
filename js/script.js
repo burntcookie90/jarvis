@@ -589,6 +589,7 @@ function json_intake(jsonObj) {
 }
 	
 function music_video_img(div){
+	/*
 		alert("it got here");
 		if($(div).attr("id") == "media_select_songs"){
 			
@@ -608,4 +609,5 @@ function music_video_img(div){
 			
 			alert("it got to img");
 		}
+		*/
 	}

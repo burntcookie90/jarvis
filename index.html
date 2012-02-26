@@ -23,10 +23,11 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						<div id="media_select_img" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
-						<div id="media_select_songs" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
-						<div id="media_select_vids" onclick="music_video_img(this);musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
+						<div id="media_select_img" onclick="picturejs();musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_songs" onclick="songsjs();musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_vids" onclick="videojs();musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
 					</div>
+					
 				</div>
 				<div id="media_select_level2" class="bg1">
 					<!--Ghost bar for music-->
@@ -53,24 +54,40 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-
-						<form id="video" hidden="false">
-						<video id="mainvideo" class="video-js vjs-default-skin"  preload
+						<SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT">
+						function songjs(){						
+						document.getElementById('video').hidden='true';	
+						document.getElementById('picture').hidden='true';				
+						}
+						function videojs(){
+						document.getElementById('music').hidden='true';
+						document.getElementById('picture').hidden='true';	
+						}
+						function picturejs(){
+						document.getElementById('song').hidden='true';	
+						document.getElementById('video').hidden='true';
+						}
+						
+						</script>
+					
+						<section id="video">
+						<video id="mainvideo"  class="video-js vjs-default-skin" hidden="hidden" preload
+						controls 
 						data-setup="{}">
 							<source src="media/video/MeettheSpy.mp4" type='video/mp4'>
-						</video>
-						</form>
+						</video>											
+						</section>
 						
-						<!--<form id="song" hidden="true">-->
-						<audio autoplay="true"
+						<section id="song" >
+						<audio autoplay="false"
 						 src="media/song/NiggasInParis.mp3" type="audio/mp3" >
 						</audio>
-					    <!--</form>--> 
+					    </section>
 						
-						<!--
-						<form id="picture" hidden="true">
-						</form>
-						-->
+						<section id="picture" >
+							<img src="http://ts4.mm.bing.net/images/thumbnail.aspx?q=1579813044439&id=fc8f9b7b3ec77e543010ff1e4cea2581&url=http%3a%2f%2fwww.yourlogoresources.com%2fwp-content%2fuploads%2f2011%2f09%2f2014-world-cup-logo.png" /> 
+						</section>
+						
 						
 					</div>
 					<div id="rightpanel_bottom" class="bg2 padding_5">
