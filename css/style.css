@@ -665,5 +665,13 @@ footer{
 	height: inherit;
 }
 
-
-
+#videos{
+	visibility:hidden
+}
+#pictures{
+	visibility:hidden
+}
+#songs{
+	visibility:hidden;
+	background-image: url(img/songs.jpg);
+}
