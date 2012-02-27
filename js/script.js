@@ -645,15 +645,3 @@ function music_video_img(div) {
 	 }
 	 */
 }
-
-function loadPics(){
-	
-}
-
-function loadMusic(){
-	
-}
-
-function loadVids(){
-	
-}
