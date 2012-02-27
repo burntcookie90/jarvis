@@ -19,7 +19,6 @@ jarvis.webdb.createTable = function() {
 		// tx.executeSql("DROP TABLE videos", []);
 		// tx.executeSql("DROP TABLE images", []);
 		// tx.executeSql("DROP TABLE playlists", []);
-		tx.executeSql("DELETE FROM playlists", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS songs (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), artist VARCHAR(255), album VARCHAR(255), image VARCHAR(255), genre VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS videos (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS images (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
@@ -31,10 +30,6 @@ jarvis.webdb.emptyTables = function() {
 	var db = jarvis.webdb.db;
 	db.transaction(function(tx) {
 		// <!-- GENRE ARTIST ALBUM SONGS -->
-		// tx.executeSql("DROP TABLE songs", []);
-		// tx.executeSql("DROP TABLE videos", []);
-		// tx.executeSql("DROP TABLE images", []);
-		// tx.executeSql("DROP TABLE playlists", []);
 		tx.executeSql("DELETE FROM playlists", []);
 		tx.executeSql("DELETE FROM songs", []);
 		tx.executeSql("DELETE FROM images", []);
