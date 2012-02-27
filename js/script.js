@@ -616,7 +616,9 @@ $(document).ready(function() {
 				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
 			}
 		} else if(event.keyCode == 72) {
-			alert('Space: Play/Pause \n M: Mute \n Left: Previous \n Right: Next \n Up: Volume Up \n Down: Volume Down \n H: This Dialog');
+			alert('Space: Play/Pause \nF: Enter Fullscreen \nM: Mute \nLeft: Previous \nRight: Next \nUp: Volume Up \nDown: Volume Down \nH: This Dialog');
+		} else if(event.keyCode == 70) {
+			fullscreen();
 		}
 
 	});
