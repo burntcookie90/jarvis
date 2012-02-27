@@ -667,12 +667,15 @@ footer{
 }
 
 #videos{
-	visibility:hidden
+	
+	display : none
 }
 #pictures{
-	visibility:hidden
+	
+	display : none
 }
 #songs{
-	visibility:hidden;
+	
 	background-image: url(img/songs.jpg);
+	display: none
 }

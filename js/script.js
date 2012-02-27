@@ -155,16 +155,16 @@ function stateMachine(div) {
 		}
 		
 		$("#songs").css({
-				"visibility" : "visible",
+				"display" : "inherit",
 				"background-image": "url(img/songs.jpg);"
 			});
 			
 			$("#videos").css({
-				"visibility" : "hidden"
+				"display" : "none"
 			});
 			
 			$("#pictures").css({
-				"visibility" : "hidden"
+				"display" : "none"
 			});
 			
 		
@@ -211,15 +211,16 @@ function stateMachine(div) {
 		}
 		
 		$("#pictures").css({
-				"visibility" : "visible"
+				"display" : "inherit"
 			});
 			
 			$("#videos").css({
-				"visibility" : "hidden"
+				"display" : "none"
+				
 			});
 			
 			$("#songs").css({
-				"visibility" : "hidden"
+				"display" : "none"
 			});
 		
 		
@@ -265,15 +266,15 @@ function stateMachine(div) {
 			currentState = '2';
 		}
 			$("#videos").css({
-				"visibility" : "visible"
+				"display" : "inherit"
 			});
 					
 			$("#songs").css({
-				"visibility" : "hidden"
+				"display" : "none"
 			});
 			
 			$("#pictures").css({
-				"visibility" : "hidden"
+				"display" : "none"
 			});
 	}
 
