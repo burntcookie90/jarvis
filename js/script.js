@@ -108,7 +108,7 @@ function playPause() {
 };
 
 var isGhostBarEnabled = '0';
-function musicGhostBar(div) {
+function stateMachine(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		jarvis.webdb.getMedia(loadMedia, "songs");
 		if(isGhostBarEnabled == '0') {
