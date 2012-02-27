@@ -590,7 +590,7 @@ $(window).resize(function() {
 $(document).ready(function() {
 	init();
 	// Spacebar eventlistener
-	$(document).keyup(function() {
+	$(document).keyup(function(event) {
 		if(event.keyCode == 32) {
 			// alert('Handler for .keyup() called.');
 			playPause();
