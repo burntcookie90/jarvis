@@ -108,10 +108,22 @@ function playPause() {
 };
 
 var isGhostBarEnabled = '0';
+var currentState = '2'; 
 function stateMachine(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		jarvis.webdb.getMedia(loadMedia, "songs");
+		$(".buttons_media_music").css({
+				"background-image" : "url(./css/img/music_hover.png)",
+		});
+		$(".buttons_media_pics").css({
+				"background-image" : "url(./css/img/pics.png)",
+		});
+		$(".buttons_media_vids").css({
+				"background-image" : "url(./css/img/video.png)",
+		});
 		if(isGhostBarEnabled == '0') {
+			_V_("mainvideo").fadeOut(200);
+			_V_("mainvideo").pause();
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
 				"visibility" : "visible"
@@ -137,9 +149,21 @@ function stateMachine(div) {
 				"visibility" : "visible"
 			});
 			isGhostBarEnabled = '1';
+			currentState = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
+		_V_("mainvideo").fadeOut(200);
+		_V_("mainvideo").pause();
 		jarvis.webdb.getMedia(loadMedia, "images");
+		$(".buttons_media_music").css({
+				"background-image" : "url(./css/img/music.png)",
+		});
+		$(".buttons_media_pics").css({
+				"background-image" : "url(./css/img/pics_hover.png)",
+		});
+		$(".buttons_media_vids").css({
+				"background-image" : "url(./css/img/video.png)",
+		});
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -161,9 +185,22 @@ function stateMachine(div) {
 				"visibility" : "hidden"
 			});
 			isGhostBarEnabled = '0';
+			currentState = '0'
 		}
 	} else if($(div).attr("id") == "media_select_vids") {
+		_V_("mainvideo").fadeIn(300);
 		jarvis.webdb.getMedia(loadMedia, "videos");
+			
+				
+			$(".buttons_media_music").css({
+				"background-image" : "url(./css/img/music.png)",
+			});
+			$(".buttons_media_pics").css({
+				"background-image" : "url(./css/img/pics.png)",
+			});
+			$(".buttons_media_vids").css({
+				"background-image" : "url(./css/img/video_hover.png)",
+			});
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -185,6 +222,7 @@ function stateMachine(div) {
 				"visibility" : "hidden"
 			});
 			isGhostBarEnabled = '0';
+			currentState = '2';
 		}
 	}
 
@@ -205,6 +243,8 @@ $(".music_artist").mouseover(function() {
 		});
 	}
 });
+
+
 
 $(".music_album").mouseover(function() {
 	if(isGhostBarEnabled == '1') {
