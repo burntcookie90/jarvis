@@ -443,7 +443,7 @@ function hidestuff(boxid) {
 
 function ajaxcall() {
 	$.ajax({
-		url : '../jarvis/php/json.php',
+		url : '../php/json.php',
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
@@ -520,15 +520,7 @@ function mute() {
 	}
 }
 
-function init() {
-	jsonObj = json_success;
-	setsizes();
-	localStorage.setItem("media", JSON.stringify(json_default));
-	ajaxcall();
-	hidestuff("whiteout");
-	var jo = jsonObj;
-	//dbinit();
-}
+
 
 function trackBarProgress(percent) {
 	//Sets the trackbar to the current percentage;
@@ -565,6 +557,18 @@ var trackBarUpdate = function() {
 };
 _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
+
+
+
+function init() {
+	jsonObj = json_success;
+	setsizes();
+	localStorage.setItem("media", JSON.stringify(json_default));
+//	ajaxcall();
+	hidestuff("whiteout");
+	var jo = jsonObj;
+	dbinit();
+}
 $(window).resize(function() {
 	setsizes();
 });
@@ -573,17 +577,3 @@ $(document).ready(function() {
 	init();
 
 });
-/**
- * Processes JSON upon opening application.
- * It interprets the JSON and populates the application with media names and files
- */
-function json_intake(jsonObj) {
-	var numSongs = jsonObj.SONG.songs.length;
-	var numVideos = jsonObj.VIDEO.videos.length;
-	var numPics = jsonObj.IMAGES.images.length;
-	var sean = jsonObj.VIDEO.videos[0].vidname;
-
-	if(numSongs > 0) {
-
-	}
-}
