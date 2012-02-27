@@ -149,9 +149,28 @@ function stateMachine(div) {
 				"background-image" : "url(./css/img/songs.png)",
 				"visibility" : "visible"
 			});
+			
+			
 			isGhostBarEnabled = '1';
 			
 		}
+		
+		$("#songs").css({
+				"visibility" : "visible",
+				"background-image": "url(img/songs.jpg);"
+			});
+			
+			$("#videos").css({
+				"visibility" : "hidden"
+			});
+			
+			$("#pictures").css({
+				"visibility" : "hidden"
+			});
+			
+		
+		
+		
 	} else if($(div).attr("id") == "media_select_img") {
 		_V_("mainvideo").fadeOut(200);
 		_V_("mainvideo").pause();
@@ -186,9 +205,27 @@ function stateMachine(div) {
 			$("#music_songs").css({
 				"visibility" : "hidden"
 			});
+			
+			
+			
 			isGhostBarEnabled = '0';
 			
 		}
+		
+		$("#pictures").css({
+				"visibility" : "visible"
+			});
+			
+			$("#videos").css({
+				"visibility" : "hidden"
+			});
+			
+			$("#songs").css({
+				"visibility" : "hidden"
+			});
+		
+		
+		
 	} else if($(div).attr("id") == "media_select_vids") {
 		_V_("mainvideo").fadeIn(300);
 		jarvis.webdb.getMedia(loadMedia, "videos");
@@ -223,9 +260,23 @@ function stateMachine(div) {
 			$("#music_songs").css({
 				"visibility" : "hidden"
 			});
+			
+			
+			
 			isGhostBarEnabled = '0';
 			
 		}
+			$("#videos").css({
+				"visibility" : "visible"
+			});
+					
+			$("#songs").css({
+				"visibility" : "hidden"
+			});
+			
+			$("#pictures").css({
+				"visibility" : "hidden"
+			});
 	}
 
 }
@@ -723,8 +774,8 @@ $(document).ready(function() {
 
 
 
-// function music_video_img(div) {
-	/*
+function music_video_img(div) {
+	
 	 alert("it got here");
 	 if($(div).attr("id") == "media_select_songs"){
 
@@ -744,6 +795,6 @@ $(document).ready(function() {
 
 	 alert("it got to img");
 	 }
-	 */
-// }
+	 
+}
 
