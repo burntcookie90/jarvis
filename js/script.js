@@ -72,6 +72,8 @@ var json_default = {
 	'IMAGES' : 'default'
 };
 
+
+
 function playPause() {
 
 	_V_("mainvideo").ready(function() {
@@ -556,10 +558,10 @@ var trackBarUpdate = function() {
 		minutes = '0' + minutes;
 	}
 
-	$(".buttons_controls_play_pause").css({
-		"background-image" : "url('./css/img/pause.png')"
-	});
-	is_Playing = '0';
+	// $(".buttons_controls_play_pause").css({
+		// "background-image" : "url('./css/img/pause.png')"
+	// });
+	// is_Playing = '0';
 
 	document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">' + hours + ':' + minutes + ':' + seconds + '</FONT>';
 };
@@ -571,6 +573,33 @@ $(window).resize(function() {
 
 $(document).ready(function() {
 	init();
+	// Spacebar eventlistener
+	$(document).keyup(function() {
+		if(event.keyCode==32){
+			// alert('Handler for .keyup() called.');
+			playPause();
+		}
+		else if(event.keyCode==77){
+			// alert('Handler for .keyup() called.');
+			mute();
+		}
+		else if(event.keyCode == 37){
+			//prev
+		}
+		else if(event.keyCode == 39){
+			//next
+		}
+		else if(event.keyCode == 38){
+			//vol up
+		}
+		else if(event.keyCode == 40){
+			//vol down 
+		}
+	  
+	});
+	
+	_V_("mainvideo").volume(100);
+	// oldVolume = 100;
 
 });
 /**

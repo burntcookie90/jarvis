@@ -392,7 +392,7 @@ header{
 	top: -54px;
 }
 .buttons_controls_play_pause:hover{
-	background-image: url(img/play_hover.png);
+/*	background-image: url(img/play_hover.png);*/
 }
 .buttons_controls_next{
 	width:80px;
