@@ -2,7 +2,7 @@
 
  */
 var jsonObj;
-var is_Playing = '1';
+var is_Playing = '0';
 var resize_pane_selected = '1';
 //Subscribe all divs to this function to resize
 var w = $(window).width();
@@ -91,24 +91,24 @@ function playPause() {
 	_V_("mainvideo").ready(function() {
 		var myPlayer = this;
 
-		if(is_Playing == '1') {
+		if(is_Playing == '0') {
 			myPlayer.play();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/pause.png')"
 			});
-			is_Playing = '0';
+			is_Playing = '1';
 		} else {
 			myPlayer.pause();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/play.png')"
 			});
-			is_Playing = '1';
+			is_Playing = '0';
 		}
 	});
 };
 
 var isGhostBarEnabled = '0';
-var currentState = '2'; 
+var currentState = '0'; 
 function stateMachine(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		jarvis.webdb.getMedia(loadMedia, "songs");
@@ -485,7 +485,7 @@ function resize_right() {
 }
 
 $(".buttons_controls_play_pause").mouseover(function() {
-	if(is_Playing == '1') {
+	if(is_Playing == '0') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play_hover.png')"
 		});
@@ -495,7 +495,7 @@ $(".buttons_controls_play_pause").mouseover(function() {
 		});
 	}
 }).mouseout(function() {
-	if(is_Playing == '1') {
+	if(is_Playing == '0') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play.png')"
 		});
@@ -713,8 +713,23 @@ var trackBarUpdate = function() {
 
 	document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">' + hours + ':' + minutes + ':' + seconds + '</FONT>';
 };
-_V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
+var paused = function(){
+		$(".buttons_controls_play_pause").css({
+			"background-image" : "url('./css/img/play.png')"
+	});
+	is_Playing = '0';
+}
+
+var playing = function(){
+		$(".buttons_controls_play_pause").css({
+			"background-image" : "url('./css/img/pause.png')"
+		});
+		is_Playing = '1';
+}
+_V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
+_V_("mainvideo").addEvent("pause", paused);
+_V_("mainvideo").addEvent("play", playing);
 
 
 
