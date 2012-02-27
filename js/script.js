@@ -601,8 +601,8 @@ $(document).ready(function() {
 	  
 	});
 	
-	_V_("mainvideo").volume(100);
-	// oldVolume = 100;
+	_V_("mainvideo").volume(1.0);
+	oldVolume = 1.0;
 
 });
 /**
