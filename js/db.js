@@ -6,20 +6,36 @@ jarvis.webdb.open = function() {
 	var dbSize = 5 * 1024 * 1024;
 	// 5MB
 	jarvis.webdb.db = openDatabase("jarvis", "1.0", "Hold all json information", dbSize);
+	if(!jarvis.webdb.db)
+
+        alert("Failed to connect to database.");
 }
 
 jarvis.webdb.createTable = function() {
 	var db = jarvis.webdb.db;
 	db.transaction(function(tx) {
 		// <!-- GENRE ARTIST ALBUM SONGS -->
-		tx.executeSql("DROP TABLE songs", []);
-		tx.executeSql("DROP TABLE videos", []);
-		tx.executeSql("DROP TABLE images", []);
-		tx.executeSql("DROP TABLE playlists", []);
-		tx.executeSql("CREATE TABLE songs (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), artist VARCHAR(255), album VARCHAR(255), image VARCHAR(255), genre VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
+		// tx.executeSql("DROP TABLE songs", []);
+		// tx.executeSql("DROP TABLE videos", []);
+		// tx.executeSql("DROP TABLE images", []);
+		// tx.executeSql("DROP TABLE playlists", []);
+		tx.executeSql("CREATE TABLE IF NOT EXISTS songs (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), artist VARCHAR(255), album VARCHAR(255), image VARCHAR(255), genre VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS videos (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS images (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS playlists (PLID INTEGER PRIMARY KEY ASC, ID_FK INTEGER, PLName VARCHAR(255), mediatype VARCHAR(255), added_on DATETIME)", []);
+	});
+}
+
+jarvis.webdb.emptyTables = function() {
+	var db = jarvis.webdb.db;
+	db.transaction(function(tx) {
+		// <!-- GENRE ARTIST ALBUM SONGS -->
+		tx.executeSql("DELETE FROM playlists", []);
+		tx.executeSql("DELETE FROM songs", []);
+		tx.executeSql("DELETE FROM images", []);
+		tx.executeSql("DELETE FROM videos", []);
+
+		
 	});
 }
 jarvis.webdb.addSong = function(serverID, title, artist, album, genre, filetype) {
@@ -108,11 +124,7 @@ function loadMedia(tx, rs) {
 	if(cur_table == "songs") {
 		for(var i = 0; i < rs.rows.length; i++) {
 			rowOutput += renderSong(rs.rows.item(i),i);
-			// var elm = "#s"+i;
-			// var code = "<p>" + rs.rows.item(i).title + "," + rs.rows.item(i).artist + "," + rs.rows.item(i).album + "</p>";
-			// $(elm).click(function(){
-				// $("#rightpanel_bottom").innerHTML = code;
-			// });
+			
 		}
 	}
 	if(cur_table == "videos") {
@@ -149,6 +161,7 @@ function dbinit() {
 	var cur_table;
 	jarvis.webdb.open();
 	jarvis.webdb.createTable();
+	jarvis.webdb.emptyTables();
 
 	// Load song table
 	var song_cnt = jsonObj.SONG.count;
@@ -161,14 +174,14 @@ function dbinit() {
 	var vid_cnt = jsonObj.VIDEO.count;
 	var vidlist = jsonObj.VIDEO.videos;
 	var i;
-	for( i = 0; i < song_cnt; i++) {
+	for( i = 0; i < vid_cnt; i++) {
 		jarvis.webdb.addVideo(vidlist[i].ID, vidlist[i].type, vidlist[i].title);
 	}
 	// Load image table
 	var img_cnt = jsonObj.IMAGES.count;
 	var imglist = jsonObj.IMAGES.images;
 	var i;
-	for( i = 0; i < song_cnt; i++) {
+	for( i = 0; i < img_cnt; i++) {
 		jarvis.webdb.addImg(imglist[i].ID, imglist[i].type, imglist[i].title);
 	}
 

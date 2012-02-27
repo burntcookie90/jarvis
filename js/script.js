@@ -16,7 +16,7 @@ var json_fail = {
 var json_success = {
 	"SONG" : {
 		"url-base" : "../media/song/",
-		"count" : "2",
+		"count" : "4",
 		"songs" : [{
 			"ID" : "1",
 			"genre" : "Alternative Rock",
@@ -31,6 +31,20 @@ var json_success = {
 			"title" : "Ordinary World",
 			"album" : "Purple",
 			"artist" : "Stone Temple Pilots"
+		},{
+			"ID" : "3",
+			"genre" : "Alternative Rock",
+			"type" : "mp3",
+			"title" : "Ya Ya",
+			"album" : "fAlbum",
+			"artist" : "The Berve"
+		}, {
+			"ID" : "4",
+			"genre" : "rock",
+			"type" : "mp3",
+			"title" : "Wa Wa",
+			"album" : "Zinton",
+			"artist" : "Wa Wa Band"
 		}]
 	},
 	"VIDEO" : {
@@ -72,8 +86,6 @@ var json_default = {
 	'IMAGES' : 'default'
 };
 
-
-
 function playPause() {
 
 	_V_("mainvideo").ready(function() {
@@ -96,9 +108,9 @@ function playPause() {
 };
 
 var isGhostBarEnabled = '0';
-function musicGhostBar(div) {
+function stateMachine(div) {
 	if($(div).attr("id") == "media_select_songs") {
-		jarvis.webdb.getMedia(loadMedia,"songs");
+		jarvis.webdb.getMedia(loadMedia, "songs");
 		if(isGhostBarEnabled == '0') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
@@ -127,7 +139,7 @@ function musicGhostBar(div) {
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
-		jarvis.webdb.getMedia(loadMedia,"images");
+		jarvis.webdb.getMedia(loadMedia, "images");
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -151,7 +163,7 @@ function musicGhostBar(div) {
 			isGhostBarEnabled = '0';
 		}
 	} else if($(div).attr("id") == "media_select_vids") {
-		jarvis.webdb.getMedia(loadMedia,"videos");
+		jarvis.webdb.getMedia(loadMedia, "videos");
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -445,7 +457,7 @@ function hidestuff(boxid) {
 
 function ajaxcall() {
 	$.ajax({
-		url : '../jarvis/php/json.php',
+		url : '../php/json.php',
 		async : true,
 		success : function(data) {
 			jsonObj = json_success;
@@ -522,15 +534,7 @@ function mute() {
 	}
 }
 
-function init() {
-	jsonObj = json_success;
-	setsizes();
-	localStorage.setItem("media", JSON.stringify(json_default));
-	ajaxcall();
-	hidestuff("whiteout");
-	var jo = jsonObj;
-	//dbinit();
-}
+
 
 function trackBarProgress(percent) {
 	//Sets the trackbar to the current percentage;
@@ -559,7 +563,7 @@ var trackBarUpdate = function() {
 	}
 
 	// $(".buttons_controls_play_pause").css({
-		// "background-image" : "url('./css/img/pause.png')"
+	// "background-image" : "url('./css/img/pause.png')"
 	// });
 	// is_Playing = '0';
 
@@ -567,6 +571,18 @@ var trackBarUpdate = function() {
 };
 _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
+
+
+
+function init() {
+	jsonObj = json_success;
+	setsizes();
+	localStorage.setItem("media", JSON.stringify(json_default));
+//	ajaxcall();
+	hidestuff("whiteout");
+	var jo = jsonObj;
+	dbinit();
+}
 $(window).resize(function() {
 	setsizes();
 });
@@ -574,69 +590,67 @@ $(window).resize(function() {
 $(document).ready(function() {
 	init();
 	// Spacebar eventlistener
-	$(document).keyup(function() {
-		if(event.keyCode==32){
+	$(document).keyup(function(event) {
+		if(event.keyCode == 32) {
 			// alert('Handler for .keyup() called.');
 			playPause();
-		}
-		else if(event.keyCode==77){
+		} else if(event.keyCode == 77) {
 			// alert('Handler for .keyup() called.');
 			mute();
-		}
-		else if(event.keyCode == 37){
+		} else if(event.keyCode == 37) {
 			//prev
-		}
-		else if(event.keyCode == 39){
+		} else if(event.keyCode == 39) {
 			//next
-		}
-		else if(event.keyCode == 38){
+		} else if(event.keyCode == 38) {
 			//vol up
+			if(_V_("mainvideo").volume() == 1.0) {
+
+			} else {(_V_("mainvideo").volume(_V_("mainvideo").volume() + .1))
+				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
+			}
+		} else if(event.keyCode == 40) {
+			//vol down
+			if(_V_("mainvideo").volume() == 0.0) {
+
+			} else {(_V_("mainvideo").volume(_V_("mainvideo").volume() - .1))
+				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
+			}
+		} else if(event.keyCode == 72) {
+			alert('Space: Play/Pause \nF: Enter Fullscreen \nM: Mute \nLeft: Previous \nRight: Next \nUp: Volume Up \nDown: Volume Down \nH: This Dialog');
+		} else if(event.keyCode == 70) {
+			fullscreen();
 		}
-		else if(event.keyCode == 40){
-			//vol down 
-		}
-	  
+
 	});
-	
-	_V_("mainvideo").volume(100);
-	// oldVolume = 100;
+
+	_V_("mainvideo").volume(1.0);
+	oldVolume = 1.0;
 
 });
-/**
- * Processes JSON upon opening application.
- * It interprets the JSON and populates the application with media names and files
- */
-function json_intake(jsonObj) {
-	var numSongs = jsonObj.SONG.songs.length;
-	var numVideos = jsonObj.VIDEO.videos.length;
-	var numPics = jsonObj.IMAGES.images.length;
-	var sean = jsonObj.VIDEO.videos[0].vidname;
 
-	if(numSongs > 0) {
 
-	}
-}
-	
-function music_video_img(div){
+
+// function music_video_img(div) {
 	/*
-		alert("it got here");
-		if($(div).attr("id") == "media_select_songs"){
-			
-		alert("it got to songs");
-				
-		}else if($(div).attr("id") == "media_select_vids") {
-			
-		alert("it got to vids");
-	
-		object= document.forms['video'];		
-		alert("it got to the middle");
-		object.elements["hidden"].value="false";
-		alert("it got to the end");
-			
-		}
-		else if($(div).attr("id") == "media_select_img") {
-			
-			alert("it got to img");
-		}
-		*/
-	}
+	 alert("it got here");
+	 if($(div).attr("id") == "media_select_songs"){
+
+	 alert("it got to songs");
+
+	 }else if($(div).attr("id") == "media_select_vids") {
+
+	 alert("it got to vids");
+
+	 object= document.forms['video'];
+	 alert("it got to the middle");
+	 object.elements["hidden"].value="false";
+	 alert("it got to the end");
+
+	 }
+	 else if($(div).attr("id") == "media_select_img") {
+
+	 alert("it got to img");
+	 }
+	 */
+// }
+

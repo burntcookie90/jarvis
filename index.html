@@ -23,9 +23,9 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						<div id="media_select_img" onclick="picturejs();musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
-						<div id="media_select_songs" onclick="songsjs();musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
-						<div id="media_select_vids" onclick="videojs();musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
+						<div id="media_select_img" onclick="stateMachine(this);" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_songs" onclick="stateMachine(this);" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_vids" onclick="stateMachine(this);" class="buttons_media_vids bg2 marginset"></div>
 					</div>
 					
 				</div>
@@ -54,25 +54,9 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-						<SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT">
-						function songsjs(){						
-						document.getElementById('video').hidden='true';	
-						document.getElementById('picture').hidden='true';
-										
-						}
-						function videojs(){
-						alert("it got to video js");
-						document.getElementById('song').hidden='true';
-						document.getElementById('picture').hidden='true';	
-												
-						//document.getElementById('video').hidden="false";
-						}
-						function picturejs(){
-						document.getElementById('song').hidden='true';	
-						document.getElementById('video').hidden='true';
-						}
 						
-						</script>
+                       <!--THE LOGIC FOR SWITCHING MEDIA TYPE CAN BE DONE IN THE
+                           MUSICGHOSTBAR FUNCTION -->
 					
 						<section id="video">
 						<video id="mainvideo"  class="video-js vjs-default-skin" preload
@@ -90,7 +74,7 @@
 					    </section>
 						
 						<section id="picture" >
-							<img src="http://ts4.mm.bing.net/images/thumbnail.aspx?q=1579813044439&id=fc8f9b7b3ec77e543010ff1e4cea2581&url=http%3a%2f%2fwww.yourlogoresources.com%2fwp-content%2fuploads%2f2011%2f09%2f2014-world-cup-logo.png" /> 
+<!-- 							<img src="http://ts4.mm.bing.net/images/thumbnail.aspx?q=1579813044439&id=fc8f9b7b3ec77e543010ff1e4cea2581&url=http%3a%2f%2fwww.yourlogoresources.com%2fwp-content%2fuploads%2f2011%2f09%2f2014-world-cup-logo.png" />  -->
 						</section>
 						
 						
@@ -144,5 +128,6 @@
 		<script src="js/plugins.js"></script>
 		<script src="js/db.js"></script>
 		<script src="js/script.js"></script>
+		
 	</body>
 </html>
