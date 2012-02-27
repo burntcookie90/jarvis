@@ -591,9 +591,23 @@ $(document).ready(function() {
 		}
 		else if(event.keyCode == 38){
 			//vol up
+			if(_V_("mainvideo").volume()==1.0){
+				
+			}
+			else{
+				(_V_("mainvideo").volume(_V_("mainvideo").volume()+.1))
+				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
+			}
 		}
 		else if(event.keyCode == 40){
 			//vol down 
+			if(_V_("mainvideo").volume()==0.0){
+				
+			}
+			else{
+				(_V_("mainvideo").volume(_V_("mainvideo").volume()-.1))
+				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
+			}
 		}
 		else if(event.keyCode == 72){
 			alert('Space: Play/Pause \n M: Mute \n Left: Previous \n Right: Next \n Up: Volume Up \n Down: Volume Down \n H: This Dialog');
