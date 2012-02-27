@@ -124,6 +124,7 @@ function stateMachine(div) {
 		if(isGhostBarEnabled == '0') {
 			_V_("mainvideo").fadeOut(200);
 			_V_("mainvideo").pause();
+			currentState = '0';
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
 				"visibility" : "visible"
@@ -149,11 +150,12 @@ function stateMachine(div) {
 				"visibility" : "visible"
 			});
 			isGhostBarEnabled = '1';
-			currentState = '1';
+			
 		}
 	} else if($(div).attr("id") == "media_select_img") {
 		_V_("mainvideo").fadeOut(200);
 		_V_("mainvideo").pause();
+		currentState = '1';
 		jarvis.webdb.getMedia(loadMedia, "images");
 		$(".buttons_media_music").css({
 				"background-image" : "url(./css/img/music.png)",
@@ -185,13 +187,13 @@ function stateMachine(div) {
 				"visibility" : "hidden"
 			});
 			isGhostBarEnabled = '0';
-			currentState = '0'
+			
 		}
 	} else if($(div).attr("id") == "media_select_vids") {
 		_V_("mainvideo").fadeIn(300);
 		jarvis.webdb.getMedia(loadMedia, "videos");
 			
-				
+			currentState = '2';
 			$(".buttons_media_music").css({
 				"background-image" : "url(./css/img/music.png)",
 			});
@@ -222,11 +224,62 @@ function stateMachine(div) {
 				"visibility" : "hidden"
 			});
 			isGhostBarEnabled = '0';
-			currentState = '2';
+			
 		}
 	}
 
 }
+
+$(".buttons_media_music").mouseover(function() {
+	if(currentState!='0')
+	{
+		$(".buttons_media_music").css({
+			"background-image" : "url('./css/img/music_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='0')
+	{
+		$(".buttons_media_music").css({
+			"background-image" : "url('./css/img/music.png')"
+		});
+	}
+});
+
+$(".buttons_media_pics").mouseover(function() {
+	if(currentState!='1')
+	{
+		$(".buttons_media_pics").css({
+			"background-image" : "url('./css/img/pics_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='1')
+	{
+		$(".buttons_media_pics").css({
+			"background-image" : "url('./css/img/pics.png')"
+		});
+	}
+});
+
+$(".buttons_media_vids").mouseover(function() {
+	if(currentState!='2')
+	{
+		$(".buttons_media_vids").css({
+			"background-image" : "url('./css/img/video_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='2')
+	{
+		$(".buttons_media_vids").css({
+			"background-image" : "url('./css/img/video.png')"
+		});
+	}
+});
 
 $(".music_artist").mouseover(function() {
 	if(isGhostBarEnabled == '1') {
