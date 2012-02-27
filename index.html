@@ -23,12 +23,10 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						
 						<div id="media_select_songs" onclick="stateMachine(this);" class="buttons_media_music bg2 marginset"></div>
 						<div id="media_select_img" onclick="stateMachine(this);" class="buttons_media_pics bg2 marginset"></div>
 						<div id="media_select_vids" onclick="stateMachine(this);" class="buttons_media_vids bg2 marginset"></div>
 					</div>
-					
 				</div>
 				<div id="media_select_level2" class="bg1">
 					<!--Ghost bar for music-->
@@ -45,44 +43,37 @@
 					<div id="resize_left" onclick="resizePanes(this)" class="float_r"></div>
 				</div>
 			</header>
-		<!-- GENRE ARTIST ALBUM SONGS -->
+			<!-- GENRE ARTIST ALBUM SONGS -->
 			<div id="main" class="bg3 nooverflow">
 				<div id="main_leftpanel" class="bg2 float_l overflow_hidden text_color">
-					<ul id="main_leftpanel_list">
-						
-					</ul>
+					<ul id="main_leftpanel_list"></ul>
 				</div>
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-						
-   						<section id="videos" class="video">
-						<video id="mainvideo"  class="video-js vjs-default-skin" preload
-						controls 
-						data-setup="{}">
-						<source src="media/video/Jay_Z_Kanye_West_Ni_as_In_Paris_Explicit-gG_dA32oH44-43.webm" type='video/webm'>
-						</video>				
-						
-						<section id="songs"  class="songs">
-						<audio autoplay="false"
-						 src="media/song/NiggasInParis.mp3" type="audio/mp3" >
-						</audio>
-					    </section>
-						
-						<section id="pictures" class="pictures">
- 		     			<img src="http://ts4.mm.bing.net/images/thumbnail.aspx?q=1579813044439&id=fc8f9b7b3ec77e543010ff1e4cea2581&url=http%3a%2f%2fwww.yourlogoresources.com%2fwp-content%2fuploads%2f2011%2f09%2f2014-world-cup-logo.png" /> 
+						<section id="videos" class="video">
+							<video id="mainvideo"  class="video-js vjs-default-skin" preload
+							controls
+							data-setup="{}">
+								<source src="media/video/Jay_Z_Kanye_West_Ni_as_In_Paris_Explicit-gG_dA32oH44-43.webm" type='video/webm'>
+							</video>
 						</section>
-						
-						
+						<section id="songs"  class="songs">
+							<audio autoplay="false"
+							src="media/song/NiggasInParis.mp3" type="audio/mp3" ></audio>
+						</section>
+						<section id="pictures" class="pictures">
+							<img src="http://ts4.mm.bing.net/images/thumbnail.aspx?q=1579813044439&id=fc8f9b7b3ec77e543010ff1e4cea2581&url=http%3a%2f%2fwww.yourlogoresources.com%2fwp-content%2fuploads%2f2011%2f09%2f2014-world-cup-logo.png" />
+						</section>
 					</div>
 					<div id="rightpanel_bottom" class="bg2 padding_5">
 						<!-- These will all need to be templates depending on media type -->
 						<div id="media_SONG" class="mediameta center_hor nooverflow center_ver text_color">
 							<!-- <script type="text/javascript">
-								media = JSON.parse(localStorage.getItem("media"));
-								document.write(media.VIDEO.videos[0].title);
-								document.write(media.VIDEO.videos[0].ID);
-								document.write(media.VIDEO.videos[0].type);
+							media = JSON.parse(localStorage.getItem("media"));
+							document.write(media.VIDEO.videos[0].title);
+							document.write(media.VIDEO.videos[0].ID);
+							document.write(media.VIDEO.videos[0].type);
 
 							</script> -->
 						</div>
@@ -124,6 +115,5 @@
 		<script src="js/plugins.js"></script>
 		<script src="js/db.js"></script>
 		<script src="js/script.js"></script>
-		
 	</body>
 </html>

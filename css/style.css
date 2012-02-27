@@ -666,16 +666,17 @@ footer{
 	height: inherit;
 }
 
+
 #videos{
-	
-	display : none
+	display : none;
 }
+
 #pictures{
 	
-	display : none
+	display : inherit;
 }
 #songs{
 	
-	background-image: url(img/songs.jpg);
-	display: none
+	background-image: url('img/songs.jpg');
+	display: block;
 }

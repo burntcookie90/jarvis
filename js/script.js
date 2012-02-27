@@ -157,7 +157,7 @@ function stateMachine(div) {
 		
 		$("#songs").css({
 				"display" : "block",
-				"background-image": "url(img/songs.jpg);"
+				"background-image": "url('img/songs.jpg');"
 			});
 			
 			$("#videos").css({
