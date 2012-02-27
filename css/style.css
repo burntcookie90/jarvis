@@ -343,7 +343,7 @@ header{
 	width: 100px;
 	height: 50px;
 	position: relative;
-	background-image: url(img/music.png);
+	background-image: url(img/music_hover.png);
 }
 .buttons_media_music:hover{
 	background-image: url(img/music_hover.png);
@@ -361,7 +361,7 @@ header{
 	width: 100px;
 	height: 50px;
 	position: relative;
-	background-image: url(img/video_hover.png);
+	background-image: url(img/video.png);
 }
 .buttons_media_vids:hover{
 	background-image: url(img/video_hover.png);

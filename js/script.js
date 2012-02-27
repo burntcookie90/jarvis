@@ -2,7 +2,7 @@
 
  */
 var jsonObj;
-var is_Playing = '1';
+var is_Playing = '0';
 var resize_pane_selected = '1';
 //Subscribe all divs to this function to resize
 var w = $(window).width();
@@ -91,24 +91,24 @@ function playPause() {
 	_V_("mainvideo").ready(function() {
 		var myPlayer = this;
 
-		if(is_Playing == '1') {
+		if(is_Playing == '0') {
 			myPlayer.play();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/pause.png')"
 			});
-			is_Playing = '0';
+			is_Playing = '1';
 		} else {
 			myPlayer.pause();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/play.png')"
 			});
-			is_Playing = '1';
+			is_Playing = '0';
 		}
 	});
 };
 
 var isGhostBarEnabled = '0';
-var currentState = '2'; 
+var currentState = '0'; 
 function stateMachine(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		jarvis.webdb.getMedia(loadMedia, "songs");
@@ -124,6 +124,7 @@ function stateMachine(div) {
 		if(isGhostBarEnabled == '0') {
 			_V_("mainvideo").fadeOut(200);
 			_V_("mainvideo").pause();
+			currentState = '0';
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
 				"visibility" : "visible"
@@ -151,7 +152,7 @@ function stateMachine(div) {
 			
 			
 			isGhostBarEnabled = '1';
-			currentState = '1';
+			
 		}
 		
 		$("#songs").css({
@@ -173,6 +174,7 @@ function stateMachine(div) {
 	} else if($(div).attr("id") == "media_select_img") {
 		_V_("mainvideo").fadeOut(200);
 		_V_("mainvideo").pause();
+		currentState = '1';
 		jarvis.webdb.getMedia(loadMedia, "images");
 		$(".buttons_media_music").css({
 				"background-image" : "url(./css/img/music.png)",
@@ -207,7 +209,7 @@ function stateMachine(div) {
 			
 			
 			isGhostBarEnabled = '0';
-			currentState = '0'
+			
 		}
 		
 		$("#pictures").css({
@@ -229,7 +231,7 @@ function stateMachine(div) {
 		_V_("mainvideo").fadeIn(300);
 		jarvis.webdb.getMedia(loadMedia, "videos");
 			
-				
+			currentState = '2';
 			$(".buttons_media_music").css({
 				"background-image" : "url(./css/img/music.png)",
 			});
@@ -263,7 +265,7 @@ function stateMachine(div) {
 			
 			
 			isGhostBarEnabled = '0';
-			currentState = '2';
+			
 		}
 			$("#videos").css({
 				"display" : "inherit"
@@ -279,6 +281,57 @@ function stateMachine(div) {
 	}
 
 }
+
+$(".buttons_media_music").mouseover(function() {
+	if(currentState!='0')
+	{
+		$(".buttons_media_music").css({
+			"background-image" : "url('./css/img/music_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='0')
+	{
+		$(".buttons_media_music").css({
+			"background-image" : "url('./css/img/music.png')"
+		});
+	}
+});
+
+$(".buttons_media_pics").mouseover(function() {
+	if(currentState!='1')
+	{
+		$(".buttons_media_pics").css({
+			"background-image" : "url('./css/img/pics_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='1')
+	{
+		$(".buttons_media_pics").css({
+			"background-image" : "url('./css/img/pics.png')"
+		});
+	}
+});
+
+$(".buttons_media_vids").mouseover(function() {
+	if(currentState!='2')
+	{
+		$(".buttons_media_vids").css({
+			"background-image" : "url('./css/img/video_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='2')
+	{
+		$(".buttons_media_vids").css({
+			"background-image" : "url('./css/img/video.png')"
+		});
+	}
+});
 
 $(".music_artist").mouseover(function() {
 	if(isGhostBarEnabled == '1') {
@@ -433,7 +486,7 @@ function resize_right() {
 }
 
 $(".buttons_controls_play_pause").mouseover(function() {
-	if(is_Playing == '1') {
+	if(is_Playing == '0') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play_hover.png')"
 		});
@@ -443,7 +496,7 @@ $(".buttons_controls_play_pause").mouseover(function() {
 		});
 	}
 }).mouseout(function() {
-	if(is_Playing == '1') {
+	if(is_Playing == '0') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play.png')"
 		});
@@ -661,8 +714,23 @@ var trackBarUpdate = function() {
 
 	document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">' + hours + ':' + minutes + ':' + seconds + '</FONT>';
 };
-_V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
+var paused = function(){
+		$(".buttons_controls_play_pause").css({
+			"background-image" : "url('./css/img/play.png')"
+	});
+	is_Playing = '0';
+}
+
+var playing = function(){
+		$(".buttons_controls_play_pause").css({
+			"background-image" : "url('./css/img/pause.png')"
+		});
+		is_Playing = '1';
+}
+_V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
+_V_("mainvideo").addEvent("pause", paused);
+_V_("mainvideo").addEvent("play", playing);
 
 
 
