@@ -361,7 +361,7 @@ header{
 	width: 100px;
 	height: 50px;
 	position: relative;
-	background-image: url(img/video.png);
+	background-image: url(img/video_hover.png);
 }
 .buttons_media_vids:hover{
 	background-image: url(img/video_hover.png);
@@ -627,15 +627,16 @@ footer{
 	position: relative;
 		
 }
-#media_select_songs{
-	left: 107px;
+#media_select_img{
+	left: 100px;
 	bottom: 54px;
 }
 
 
+
 #media_select_vids{
-	left: 214px;
-	bottom: 107px;
+	left: 200px;
+	bottom: 108px;
 }
 #fullscreen{
 	z-index: 0;
