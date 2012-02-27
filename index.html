@@ -23,9 +23,9 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						<div id="media_select_img" onclick="picturejs();musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
-						<div id="media_select_songs" onclick="songsjs();musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
-						<div id="media_select_vids" onclick="videojs();musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
+						<div id="media_select_img" onclick="loadPics();musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_songs" onclick="loadMusic();musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_vids" onclick="loadVids();musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
 					</div>
 					
 				</div>
@@ -54,7 +54,7 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-						<SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT">
+						<!-- <SCRIPT LANGUAGE="JAVASCRIPT" TYPE="TEXT/JAVASCRIPT">
 						function songsjs(){						
 						// document.getElementById('video').hidden='true';	
 						// document.getElementById('picture').hidden='true';
@@ -72,7 +72,7 @@
 						// document.getElementById('video').hidden='true';
 						}
 						
-						</script>
+						</script> -->
 					
 						<section id="video">
 						<video id="mainvideo"  class="video-js vjs-default-skin" preload

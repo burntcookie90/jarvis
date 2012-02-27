@@ -72,8 +72,6 @@ var json_default = {
 	'IMAGES' : 'default'
 };
 
-
-
 function playPause() {
 
 	_V_("mainvideo").ready(function() {
@@ -98,7 +96,7 @@ function playPause() {
 var isGhostBarEnabled = '0';
 function musicGhostBar(div) {
 	if($(div).attr("id") == "media_select_songs") {
-		jarvis.webdb.getMedia(loadMedia,"songs");
+		jarvis.webdb.getMedia(loadMedia, "songs");
 		if(isGhostBarEnabled == '0') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
@@ -127,7 +125,7 @@ function musicGhostBar(div) {
 			isGhostBarEnabled = '1';
 		}
 	} else if($(div).attr("id") == "media_select_img") {
-		jarvis.webdb.getMedia(loadMedia,"images");
+		jarvis.webdb.getMedia(loadMedia, "images");
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -151,7 +149,7 @@ function musicGhostBar(div) {
 			isGhostBarEnabled = '0';
 		}
 	} else if($(div).attr("id") == "media_select_vids") {
-		jarvis.webdb.getMedia(loadMedia,"videos");
+		jarvis.webdb.getMedia(loadMedia, "videos");
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -559,7 +557,7 @@ var trackBarUpdate = function() {
 	}
 
 	// $(".buttons_controls_play_pause").css({
-		// "background-image" : "url('./css/img/pause.png')"
+	// "background-image" : "url('./css/img/pause.png')"
 	// });
 	// is_Playing = '0';
 
@@ -575,46 +573,36 @@ $(document).ready(function() {
 	init();
 	// Spacebar eventlistener
 	$(document).keyup(function() {
-		if(event.keyCode==32){
+		if(event.keyCode == 32) {
 			// alert('Handler for .keyup() called.');
 			playPause();
-		}
-		else if(event.keyCode==77){
+		} else if(event.keyCode == 77) {
 			// alert('Handler for .keyup() called.');
 			mute();
-		}
-		else if(event.keyCode == 37){
+		} else if(event.keyCode == 37) {
 			//prev
-		}
-		else if(event.keyCode == 39){
+		} else if(event.keyCode == 39) {
 			//next
-		}
-		else if(event.keyCode == 38){
+		} else if(event.keyCode == 38) {
 			//vol up
-			if(_V_("mainvideo").volume()==1.0){
-				
-			}
-			else{
-				(_V_("mainvideo").volume(_V_("mainvideo").volume()+.1))
+			if(_V_("mainvideo").volume() == 1.0) {
+
+			} else {(_V_("mainvideo").volume(_V_("mainvideo").volume() + .1))
 				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
 			}
-		}
-		else if(event.keyCode == 40){
-			//vol down 
-			if(_V_("mainvideo").volume()==0.0){
-				
-			}
-			else{
-				(_V_("mainvideo").volume(_V_("mainvideo").volume()-.1))
+		} else if(event.keyCode == 40) {
+			//vol down
+			if(_V_("mainvideo").volume() == 0.0) {
+
+			} else {(_V_("mainvideo").volume(_V_("mainvideo").volume() - .1))
 				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
 			}
-		}
-		else if(event.keyCode == 72){
+		} else if(event.keyCode == 72) {
 			alert('Space: Play/Pause \n M: Mute \n Left: Previous \n Right: Next \n Up: Volume Up \n Down: Volume Down \n H: This Dialog');
 		}
-	  
+
 	});
-	
+
 	_V_("mainvideo").volume(1.0);
 	oldVolume = 1.0;
 
@@ -633,27 +621,39 @@ function json_intake(jsonObj) {
 
 	}
 }
-	
-function music_video_img(div){
+
+function music_video_img(div) {
 	/*
-		alert("it got here");
-		if($(div).attr("id") == "media_select_songs"){
-			
-		alert("it got to songs");
-				
-		}else if($(div).attr("id") == "media_select_vids") {
-			
-		alert("it got to vids");
+	 alert("it got here");
+	 if($(div).attr("id") == "media_select_songs"){
+
+	 alert("it got to songs");
+
+	 }else if($(div).attr("id") == "media_select_vids") {
+
+	 alert("it got to vids");
+
+	 object= document.forms['video'];
+	 alert("it got to the middle");
+	 object.elements["hidden"].value="false";
+	 alert("it got to the end");
+
+	 }
+	 else if($(div).attr("id") == "media_select_img") {
+
+	 alert("it got to img");
+	 }
+	 */
+}
+
+function loadPics(){
 	
-		object= document.forms['video'];		
-		alert("it got to the middle");
-		object.elements["hidden"].value="false";
-		alert("it got to the end");
-			
-		}
-		else if($(div).attr("id") == "media_select_img") {
-			
-			alert("it got to img");
-		}
-		*/
-	}
+}
+
+function loadMusic(){
+	
+}
+
+function loadVids(){
+	
+}
