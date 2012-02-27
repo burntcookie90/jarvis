@@ -673,10 +673,10 @@ footer{
 
 #pictures{
 	
-	display : inherit;
+	display : none;
 }
 #songs{
 	
 	background-image: url('img/songs.jpg');
-	display: block;
+	display: none;
 }

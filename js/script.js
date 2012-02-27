@@ -156,7 +156,7 @@ function stateMachine(div) {
 		}
 		
 		$("#songs").css({
-				"display" : "block",
+				"display" : "inherit",
 				"background-image": "url('img/songs.jpg');"
 			});
 			
@@ -213,7 +213,7 @@ function stateMachine(div) {
 		}
 		
 		$("#pictures").css({
-				"display" : "block"
+				"display" : "inherit"
 			});
 			
 			$("#videos").css({
@@ -268,7 +268,7 @@ function stateMachine(div) {
 			
 		}
 			$("#videos").css({
-				"display" : "block"
+				"display" : "inherit"
 			});
 					
 			$("#songs").css({
