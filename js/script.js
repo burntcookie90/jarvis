@@ -16,7 +16,7 @@ var json_fail = {
 var json_success = {
 	"SONG" : {
 		"url-base" : "../media/song/",
-		"count" : "2",
+		"count" : "4",
 		"songs" : [{
 			"ID" : "1",
 			"genre" : "Alternative Rock",
@@ -31,6 +31,20 @@ var json_success = {
 			"title" : "Ordinary World",
 			"album" : "Purple",
 			"artist" : "Stone Temple Pilots"
+		},{
+			"ID" : "3",
+			"genre" : "Alternative Rock",
+			"type" : "mp3",
+			"title" : "Ya Ya",
+			"album" : "fAlbum",
+			"artist" : "The Berve"
+		}, {
+			"ID" : "4",
+			"genre" : "rock",
+			"type" : "mp3",
+			"title" : "Wa Wa",
+			"album" : "Zinton",
+			"artist" : "Wa Wa Band"
 		}]
 	},
 	"VIDEO" : {
@@ -612,22 +626,9 @@ $(document).ready(function() {
 
 });
 
-/**
- * Processes JSON upon opening application.
- * It interprets the JSON and populates the application with media names and files
- */
-function json_intake(jsonObj) {
-	var numSongs = jsonObj.SONG.songs.length;
-	var numVideos = jsonObj.VIDEO.videos.length;
-	var numPics = jsonObj.IMAGES.images.length;
-	var sean = jsonObj.VIDEO.videos[0].vidname;
 
-	if(numSongs > 0) {
 
-	}
-}
-
-function music_video_img(div) {
+// function music_video_img(div) {
 	/*
 	 alert("it got here");
 	 if($(div).attr("id") == "media_select_songs"){
@@ -649,5 +650,5 @@ function music_video_img(div) {
 	 alert("it got to img");
 	 }
 	 */
-}
+// }
 
