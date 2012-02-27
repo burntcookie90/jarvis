@@ -8,17 +8,13 @@ jarvis.webdb.open = function() {
 	jarvis.webdb.db = openDatabase("jarvis", "1.0", "Hold all json information", dbSize);
 	if(!jarvis.webdb.db)
 
-        alert("Failed to connect to database.");
+		alert("Failed to connect to database.");
 }
 
 jarvis.webdb.createTable = function() {
 	var db = jarvis.webdb.db;
 	db.transaction(function(tx) {
 		// <!-- GENRE ARTIST ALBUM SONGS -->
-		// tx.executeSql("DROP TABLE songs", []);
-		// tx.executeSql("DROP TABLE videos", []);
-		// tx.executeSql("DROP TABLE images", []);
-		// tx.executeSql("DROP TABLE playlists", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS songs (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), artist VARCHAR(255), album VARCHAR(255), image VARCHAR(255), genre VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS videos (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
 		tx.executeSql("CREATE TABLE IF NOT EXISTS images (ID INTEGER PRIMARY KEY ASC, serverID INTEGER, title VARCHAR(255), filetype VARCHAR(255) , added_on DATETIME)", []);
@@ -29,13 +25,10 @@ jarvis.webdb.createTable = function() {
 jarvis.webdb.emptyTables = function() {
 	var db = jarvis.webdb.db;
 	db.transaction(function(tx) {
-		// <!-- GENRE ARTIST ALBUM SONGS -->
 		tx.executeSql("DELETE FROM playlists", []);
 		tx.executeSql("DELETE FROM songs", []);
 		tx.executeSql("DELETE FROM images", []);
 		tx.executeSql("DELETE FROM videos", []);
-
-		
 	});
 }
 jarvis.webdb.addSong = function(serverID, title, artist, album, genre, filetype) {
@@ -95,67 +88,65 @@ jarvis.webdb.getMediaBy = function(renderFunc, table, by) {
 	var db = jarvis.webdb.db;
 	cur_table = table;
 	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM " + table +" ORDER BY " + by + " ASC", [], renderFunc, jarvis.webdb.onError);
+		tx.executeSql("SELECT * FROM " + table + " ORDER BY " + by + " ASC", [], renderFunc, jarvis.webdb.onError);
 	});
 }
-
-function obj_id(event){
+function obj_id(event) {
 	var obj;
-	if (navigator.appName.indexOf("Microsoft")!=-1){
-		obj=window.event.srcElement.id;
-	} else{
+	if(navigator.appName.indexOf("Microsoft") != -1) {
+		obj = window.event.srcElement.id;
+	} else {
 		obj = event.target.id;
 	}
 	return obj
 }
 
-function object_click(event){
-		var objtext = obj_id(event);
-		var obj = document.getElementById(objtext);
-		if (obj.tagName != "DIV"){
-			var code = "<ul>" + obj.innerHTML + "</ul>";
+function object_click(event) {
+	var objtext = obj_id(event);
+	var obj = document.getElementById(objtext);
+	if(obj.tagName != "DIV") {
+		var code = "<ul>" + obj.innerHTML + "</ul>";
 		$('#rightpanel_bottom').html(code);
-		}
-		
 	}
+
+}
+
 function loadMedia(tx, rs) {
 	var rowOutput = "";
 	var list = document.getElementById("main_leftpanel_list");
 	if(cur_table == "songs") {
 		for(var i = 0; i < rs.rows.length; i++) {
-			rowOutput += renderSong(rs.rows.item(i),i);
-			
+			rowOutput += renderSong(rs.rows.item(i), i);
+
 		}
 	}
 	if(cur_table == "videos") {
 		for(var i = 0; i < rs.rows.length; i++) {
-			rowOutput += renderVideo(rs.rows.item(i),i);
+			rowOutput += renderVideo(rs.rows.item(i), i);
 		}
 	}
 	if(cur_table == "images") {
 		for(var i = 0; i < rs.rows.length; i++) {
-			rowOutput += renderImage(rs.rows.item(i),i);
+			rowOutput += renderImage(rs.rows.item(i), i);
 		}
 	}
 
 	list.innerHTML = rowOutput;
 	document.getElementById('main_leftpanel').onclick = object_click;
-	
+
 }
 
-
-
-
-function renderSong(row,i) {
-	return "<li id=s"+i+"><a onclick: ><p class='inline'>" + row.title + "," + row.artist + "," + row.album +"</p></a></li>";
-}
-function renderVideo(row,i) {
-	return "<li id=v"+i+"><a href='http://www.google.com'><p class='inline'>" + row.title +"."+ row.filetype + "</p></a></li>";
-}
-function renderImage(row,i) {
-	return "<li id=i"+i+"><a href='http://www.google.com'><p class='inline'>" + row.title +"."+ row.filetype + "</p></a></li>";
+function renderSong(row, i) {
+	return "<li id=s" + i + "><a onclick: ><p class='inline'>" + row.title + "," + row.artist + "," + row.album + "</p></a></li>";
 }
 
+function renderVideo(row, i) {
+	return "<li id=v" + i + "><a href='http://www.google.com'><p class='inline'>" + row.title + "." + row.filetype + "</p></a></li>";
+}
+
+function renderImage(row, i) {
+	return "<li id=i" + i + "><a href='http://www.google.com'><p class='inline'>" + row.title + "." + row.filetype + "</p></a></li>";
+}
 
 function dbinit() {
 	var cur_table;

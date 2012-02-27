@@ -31,7 +31,7 @@ var json_success = {
 			"title" : "Ordinary World",
 			"album" : "Purple",
 			"artist" : "Stone Temple Pilots"
-		},{
+		}, {
 			"ID" : "3",
 			"genre" : "Alternative Rock",
 			"type" : "mp3",
@@ -534,8 +534,6 @@ function mute() {
 	}
 }
 
-
-
 function trackBarProgress(percent) {
 	//Sets the trackbar to the current percentage;
 	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (percent);
@@ -571,18 +569,17 @@ var trackBarUpdate = function() {
 };
 _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 
-
-
-
 function init() {
 	jsonObj = json_success;
 	setsizes();
 	localStorage.setItem("media", JSON.stringify(json_default));
-//	ajaxcall();
+	//	ajaxcall();
 	hidestuff("whiteout");
 	var jo = jsonObj;
 	dbinit();
 }
+
+
 $(window).resize(function() {
 	setsizes();
 });
@@ -625,30 +622,26 @@ $(document).ready(function() {
 	oldVolume = 1.0;
 
 });
-
-
-
 // function music_video_img(div) {
-	/*
-	 alert("it got here");
-	 if($(div).attr("id") == "media_select_songs"){
+/*
+alert("it got here");
+if($(div).attr("id") == "media_select_songs"){
 
-	 alert("it got to songs");
+alert("it got to songs");
 
-	 }else if($(div).attr("id") == "media_select_vids") {
+}else if($(div).attr("id") == "media_select_vids") {
 
-	 alert("it got to vids");
+alert("it got to vids");
 
-	 object= document.forms['video'];
-	 alert("it got to the middle");
-	 object.elements["hidden"].value="false";
-	 alert("it got to the end");
+object= document.forms['video'];
+alert("it got to the middle");
+object.elements["hidden"].value="false";
+alert("it got to the end");
 
-	 }
-	 else if($(div).attr("id") == "media_select_img") {
+}
+else if($(div).attr("id") == "media_select_img") {
 
-	 alert("it got to img");
-	 }
-	 */
+alert("it got to img");
+}
+*/
 // }
-
