@@ -595,6 +595,9 @@ $(document).ready(function() {
 		else if(event.keyCode == 40){
 			//vol down 
 		}
+		else if(event.keyCode == 72){
+			alert('Space: Play/Pause \n M: Mute \n Left: Previous \n Right: Next \n Up: Volume Up \n Down: Volume Down \n H: This Dialog');
+		}
 	  
 	});
 	
