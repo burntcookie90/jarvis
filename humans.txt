@@ -1,6 +1,6 @@
 /* the humans responsible & colophon */
 /* humanstxt.org */
-/* alpha2-relea */
+/* alpha2-release */
 
 /* TEAM */
   <your title>: <your name>
