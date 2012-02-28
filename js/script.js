@@ -81,10 +81,37 @@ var json_success = {
 
 // DEFAULT JSON OBJECT IN CASE OF FAILURE
 var json_default = {
-	'SONG' : 'default',
-	'VIDEO' : 'default',
-	'IMAGES' : 'default'
-};
+	"SONG" : {
+		"url-base" : "no media",
+		"count" : "no media",
+		"songs" : [{
+			"ID" : "no media",
+			"genre" : "no media",
+			"type" : "no media",
+			"title" : "no media",
+			"album" : "no media",
+			"artist" : "no media"
+		}]
+	},
+	"VIDEO" : {
+		"url-base" : "no media",
+		"count" : "no media",
+		"videos" : [{
+			"ID" : "no media",
+			"type" : "no media",
+			"title" : "no media",
+		}]
+	},
+	"IMAGES" : {
+		"url-base" : "no media",
+		"count" : "no media",
+		"images" : [{
+			"ID" : "no media",
+			"type" : "no media",
+			"title" : "no media",
+		}]
+	}
+}
 
 function playPause() {
 
@@ -679,6 +706,21 @@ function mute() {
 	}
 }
 
+<<<<<<< HEAD
+
+function init() {
+	jsonObj = json_success;
+	setsizes();
+	// set media storage to default before anyhting else
+	localStorage.setItem("media", JSON.stringify(json_default));
+	ajaxcall();
+	hidestuff("whiteout");
+	var jo = jsonObj;
+	//dbinit();
+}
+
+=======
+>>>>>>> 5cb71e8fab3f2a1be9a6dbc37252a43c9e6b1cc3
 function trackBarProgress(percent) {
 	//Sets the trackbar to the current percentage;
 	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (percent);
