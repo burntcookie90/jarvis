@@ -23,9 +23,9 @@
 				</div>
 				<div id="media_select" class="center bg1">
 					<div id="media_select_btn_container" class="">
-						<div id="media_select_img" onclick="musicGhostBar(this);" class="buttons_media_pics bg2 marginset"></div>
-						<div id="media_select_songs" onclick="musicGhostBar(this);" class="buttons_media_music bg2 marginset"></div>
-						<div id="media_select_vids" onclick="musicGhostBar(this);" class="buttons_media_vids bg2 marginset"></div>
+						<div id="media_select_songs" onclick="stateMachine(this);" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_img" onclick="stateMachine(this);" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_vids" onclick="stateMachine(this);" class="buttons_media_vids bg2 marginset"></div>
 					</div>
 				</div>
 				<div id="media_select_level2" class="bg1">
@@ -51,22 +51,20 @@
 				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
 					<div id="rightpanel_top" class="bg2 padding_5">
 						<!-- video tag goes here -->
-						<!--THE LOGIC FOR SWITCHING MEDIA TYPE CAN BE DONE IN THE
-						MUSICGHOSTBAR FUNCTION -->
-						<section id="video">
+						<section id="videos" class="video">
 							<video id="mainvideo"  class="video-js vjs-default-skin" preload
 							controls
 							data-setup="{}">
 								<source src="media/video/Jay_Z_Kanye_West_Ni_as_In_Paris_Explicit-gG_dA32oH44-43.webm" type='video/webm'>
 							</video>
-							</form>
-							<section id="song" >
-								<audio autoplay="false"
-								src="media/song/NiggasInParis.mp3" type="audio/mp3" ></audio>
-							</section>
-							<section id="picture" >
-								<!-- 							<img src="http://ts4.mm.bing.net/images/thumbnail.aspx?q=1579813044439&id=fc8f9b7b3ec77e543010ff1e4cea2581&url=http%3a%2f%2fwww.yourlogoresources.com%2fwp-content%2fuploads%2f2011%2f09%2f2014-world-cup-logo.png" />  -->
-							</section>
+						</section>
+						<section id="songs"  class="songs">
+							<audio autoplay="false"
+							src="media/song/NiggasInParis.mp3" type="audio/mp3" ></audio>
+						</section>
+						<section id="pictures" class="pictures">
+							<img src="http://ts4.mm.bing.net/images/thumbnail.aspx?q=1579813044439&id=fc8f9b7b3ec77e543010ff1e4cea2581&url=http%3a%2f%2fwww.yourlogoresources.com%2fwp-content%2fuploads%2f2011%2f09%2f2014-world-cup-logo.png" />
+						</section>
 					</div>
 					<div id="rightpanel_bottom" class="bg2 padding_5">
 						<!-- These will all need to be templates depending on media type -->
@@ -98,12 +96,12 @@
 						<FONT COLOR="262c32">0:00:00</FONT>;
 					</div>
 					<div id="progress"  onclick= "seek()" class = "trackbar bg2">
-						<p style="position: absolute; left: 0; top: 0; background-color: #34b4e3; height: 100%; font-size: 0px;">
+						<p style="position: absolute; left: 0; top: 0; background-color: #34b4e3; width: 0%; height: 100%; font-size: 0px;">
 							&nbsp;
 						</p>
 					</div>
 					<div id="volumeIcon"  onclick = "mute()" class="volume_icon bg2"></div>
-					<div id="volumeBar"  onclick= "changeVolume()" class = "volume">
+					<div id="volumeBar"  onclick= "changeVolume()" class = "volume bg2">
 						<p style="position: absolute; left: 0; top: 0; background-color: #34b4e3; height: 100%; font-size: 0px;">
 							&nbsp;
 						</p>

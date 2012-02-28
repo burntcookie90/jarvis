@@ -2,7 +2,7 @@
 
  */
 var jsonObj;
-var is_Playing = '1';
+var is_Playing = '0';
 var resize_pane_selected = '1';
 //Subscribe all divs to this function to resize
 var w = $(window).width();
@@ -91,27 +91,40 @@ function playPause() {
 	_V_("mainvideo").ready(function() {
 		var myPlayer = this;
 
-		if(is_Playing == '1') {
+		if(is_Playing == '0') {
 			myPlayer.play();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/pause.png')"
 			});
-			is_Playing = '0';
+			is_Playing = '1';
 		} else {
 			myPlayer.pause();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/play.png')"
 			});
-			is_Playing = '1';
+			is_Playing = '0';
 		}
 	});
 };
 
 var isGhostBarEnabled = '0';
-function musicGhostBar(div) {
+var currentState = '0'; 
+function stateMachine(div) {
 	if($(div).attr("id") == "media_select_songs") {
 		jarvis.webdb.getMedia(loadMedia, "songs");
+		$(".buttons_media_music").css({
+				"background-image" : "url(./css/img/music_hover.png)",
+		});
+		$(".buttons_media_pics").css({
+				"background-image" : "url(./css/img/pics.png)",
+		});
+		$(".buttons_media_vids").css({
+				"background-image" : "url(./css/img/video.png)",
+		});
 		if(isGhostBarEnabled == '0') {
+			_V_("mainvideo").fadeOut(200);
+			_V_("mainvideo").pause();
+			currentState = '0';
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
 				"visibility" : "visible"
@@ -136,10 +149,42 @@ function musicGhostBar(div) {
 				"background-image" : "url(./css/img/songs.png)",
 				"visibility" : "visible"
 			});
+			
+			
 			isGhostBarEnabled = '1';
+			
 		}
+		
+		$("#songs").css({
+				"display" : "inherit",
+				"background-image": "url('img/songs.jpg');"
+			});
+			
+			$("#videos").css({
+				"display" : "none"
+			});
+			
+			$("#pictures").css({
+				"display" : "none"
+			});
+			
+		
+		
+		
 	} else if($(div).attr("id") == "media_select_img") {
+		_V_("mainvideo").fadeOut(200);
+		_V_("mainvideo").pause();
+		currentState = '1';
 		jarvis.webdb.getMedia(loadMedia, "images");
+		$(".buttons_media_music").css({
+				"background-image" : "url(./css/img/music.png)",
+		});
+		$(".buttons_media_pics").css({
+				"background-image" : "url(./css/img/pics_hover.png)",
+		});
+		$(".buttons_media_vids").css({
+				"background-image" : "url(./css/img/video.png)",
+		});
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -160,10 +205,42 @@ function musicGhostBar(div) {
 			$("#music_songs").css({
 				"visibility" : "hidden"
 			});
+			
+			
+			
 			isGhostBarEnabled = '0';
+			
 		}
+		
+		$("#pictures").css({
+				"display" : "inherit"
+			});
+			
+			$("#videos").css({
+				"display" : "none"
+				
+			});
+			
+			$("#songs").css({
+				"display" : "none"
+			});
+		
+		
+		
 	} else if($(div).attr("id") == "media_select_vids") {
+		_V_("mainvideo").fadeIn(300);
 		jarvis.webdb.getMedia(loadMedia, "videos");
+			
+			currentState = '2';
+			$(".buttons_media_music").css({
+				"background-image" : "url(./css/img/music.png)",
+			});
+			$(".buttons_media_pics").css({
+				"background-image" : "url(./css/img/pics.png)",
+			});
+			$(".buttons_media_vids").css({
+				"background-image" : "url(./css/img/video_hover.png)",
+			});
 		if(isGhostBarEnabled == '1') {
 			$("#media_select_level3").css({
 				"background-color" : "#111111"
@@ -184,11 +261,77 @@ function musicGhostBar(div) {
 			$("#music_songs").css({
 				"visibility" : "hidden"
 			});
+			
+			
+			
 			isGhostBarEnabled = '0';
+			
 		}
+			$("#videos").css({
+				"display" : "inherit"
+			});
+					
+			$("#songs").css({
+				"display" : "none"
+			});
+			
+			$("#pictures").css({
+				"display" : "none"
+			});
 	}
 
 }
+
+$(".buttons_media_music").mouseover(function() {
+	if(currentState!='0')
+	{
+		$(".buttons_media_music").css({
+			"background-image" : "url('./css/img/music_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='0')
+	{
+		$(".buttons_media_music").css({
+			"background-image" : "url('./css/img/music.png')"
+		});
+	}
+});
+
+$(".buttons_media_pics").mouseover(function() {
+	if(currentState!='1')
+	{
+		$(".buttons_media_pics").css({
+			"background-image" : "url('./css/img/pics_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='1')
+	{
+		$(".buttons_media_pics").css({
+			"background-image" : "url('./css/img/pics.png')"
+		});
+	}
+});
+
+$(".buttons_media_vids").mouseover(function() {
+	if(currentState!='2')
+	{
+		$(".buttons_media_vids").css({
+			"background-image" : "url('./css/img/video_hover.png')"
+		});
+	}
+
+}).mouseout(function() {
+	if(currentState!='2')
+	{
+		$(".buttons_media_vids").css({
+			"background-image" : "url('./css/img/video.png')"
+		});
+	}
+});
 
 $(".music_artist").mouseover(function() {
 	if(isGhostBarEnabled == '1') {
@@ -205,6 +348,8 @@ $(".music_artist").mouseover(function() {
 		});
 	}
 });
+
+
 
 $(".music_album").mouseover(function() {
 	if(isGhostBarEnabled == '1') {
@@ -341,7 +486,7 @@ function resize_right() {
 }
 
 $(".buttons_controls_play_pause").mouseover(function() {
-	if(is_Playing == '1') {
+	if(is_Playing == '0') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play_hover.png')"
 		});
@@ -351,7 +496,7 @@ $(".buttons_controls_play_pause").mouseover(function() {
 		});
 	}
 }).mouseout(function() {
-	if(is_Playing == '1') {
+	if(is_Playing == '0') {
 		$(".buttons_controls_play_pause").css({
 			"background-image" : "url('./css/img/play.png')"
 		});
@@ -567,7 +712,25 @@ var trackBarUpdate = function() {
 
 	document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">' + hours + ':' + minutes + ':' + seconds + '</FONT>';
 };
+
+
+var paused = function(){
+		$(".buttons_controls_play_pause").css({
+			"background-image" : "url('./css/img/play.png')"
+	});
+	is_Playing = '0';
+}
+
+var playing = function(){
+		$(".buttons_controls_play_pause").css({
+			"background-image" : "url('./css/img/pause.png')"
+		});
+		is_Playing = '1';
+}
 _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
+_V_("mainvideo").addEvent("pause", paused);
+_V_("mainvideo").addEvent("play", playing);
+
 
 function init() {
 	jsonObj = json_success;
@@ -613,7 +776,9 @@ $(document).ready(function() {
 				document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((_V_("mainvideo").volume() * 100) + '%'));
 			}
 		} else if(event.keyCode == 72) {
-			alert('Space: Play/Pause \n M: Mute \n Left: Previous \n Right: Next \n Up: Volume Up \n Down: Volume Down \n H: This Dialog');
+			alert('Space: Play/Pause \nF: Enter Fullscreen \nM: Mute \nLeft: Previous \nRight: Next \nUp: Volume Up \nDown: Volume Down \nH: This Dialog');
+		} else if(event.keyCode == 70) {
+			fullscreen();
 		}
 
 	});
@@ -622,26 +787,3 @@ $(document).ready(function() {
 	oldVolume = 1.0;
 
 });
-// function music_video_img(div) {
-/*
-alert("it got here");
-if($(div).attr("id") == "media_select_songs"){
-
-alert("it got to songs");
-
-}else if($(div).attr("id") == "media_select_vids") {
-
-alert("it got to vids");
-
-object= document.forms['video'];
-alert("it got to the middle");
-object.elements["hidden"].value="false";
-alert("it got to the end");
-
-}
-else if($(div).attr("id") == "media_select_img") {
-
-alert("it got to img");
-}
-*/
-// }
