@@ -157,7 +157,7 @@ function stateMachine(div) {
 		
 		$("#songs").css({
 				"display" : "inherit",
-				"background-image": "url('img/songs.jpg');"
+				"background-image": "url('img/defualtcd.jpg');"
 			});
 			
 			$("#videos").css({

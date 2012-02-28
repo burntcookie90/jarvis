@@ -674,9 +674,16 @@ footer{
 #pictures{
 	
 	display : none;
+	margin-left: auto;
+	margin-right: auto;
 }
 #songs{
-	display: none;
-	background-image: url('img/songs.jpg');
+	display: block;
+	background-image: url(img/defaultcd.jpg);
+	height: 101px;
+	width : 101px;
+	vertical-align: auto;
+	margin-left: auto;
+	margin-right: auto;
 	
 }
