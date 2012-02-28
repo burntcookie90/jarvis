@@ -669,14 +669,24 @@ footer{
 
 #videos{
 	display : none;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #pictures{
 	
 	display : none;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
 }
 #songs{
+	display : none;
+	height: 103px;
+	width: 103px;
+	vertical-align: auto;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(img/defaultcd.jpg);
 	
-	background-image: url('img/songs.jpg');
-	display: none;
 }

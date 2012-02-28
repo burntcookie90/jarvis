@@ -81,10 +81,37 @@ var json_success = {
 
 // DEFAULT JSON OBJECT IN CASE OF FAILURE
 var json_default = {
-	'SONG' : 'default',
-	'VIDEO' : 'default',
-	'IMAGES' : 'default'
-};
+	"SONG" : {
+		"url-base" : "no media",
+		"count" : "no media",
+		"songs" : [{
+			"ID" : "no media",
+			"genre" : "no media",
+			"type" : "no media",
+			"title" : "no media",
+			"album" : "no media",
+			"artist" : "no media"
+		}]
+	},
+	"VIDEO" : {
+		"url-base" : "no media",
+		"count" : "no media",
+		"videos" : [{
+			"ID" : "no media",
+			"type" : "no media",
+			"title" : "no media",
+		}]
+	},
+	"IMAGES" : {
+		"url-base" : "no media",
+		"count" : "no media",
+		"images" : [{
+			"ID" : "no media",
+			"type" : "no media",
+			"title" : "no media",
+		}]
+	}
+}
 
 function playPause() {
 
@@ -157,7 +184,10 @@ function stateMachine(div) {
 		
 		$("#songs").css({
 				"display" : "inherit",
-				"background-image": "url('img/songs.jpg');"
+				"background-image": "url('img/defaultcd.jpg');",
+				"vertical-align": "middle;",
+				"margin-left" : "auto;",
+				"margin-right" : "auto;"
 			});
 			
 			$("#videos").css({
@@ -213,7 +243,11 @@ function stateMachine(div) {
 		}
 		
 		$("#pictures").css({
-				"display" : "inherit"
+				"display" : "inherit",
+				"vertical-align": "middle;",
+				"margin-left" : "auto;",
+				"margin-right" : "auto;"
+				
 			});
 			
 			$("#videos").css({
@@ -268,7 +302,10 @@ function stateMachine(div) {
 			
 		}
 			$("#videos").css({
-				"display" : "inherit"
+				"display" : "inherit",
+				"vertical-align": "middle;",
+				"margin-left" : "auto;",
+				"margin-right" : "auto;"
 			});
 					
 			$("#songs").css({
