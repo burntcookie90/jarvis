@@ -706,21 +706,6 @@ function mute() {
 	}
 }
 
-<<<<<<< HEAD
-
-function init() {
-	jsonObj = json_success;
-	setsizes();
-	// set media storage to default before anyhting else
-	localStorage.setItem("media", JSON.stringify(json_default));
-	ajaxcall();
-	hidestuff("whiteout");
-	var jo = jsonObj;
-	//dbinit();
-}
-
-=======
->>>>>>> 5cb71e8fab3f2a1be9a6dbc37252a43c9e6b1cc3
 function trackBarProgress(percent) {
 	//Sets the trackbar to the current percentage;
 	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (percent);
