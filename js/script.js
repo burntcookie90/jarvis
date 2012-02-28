@@ -157,7 +157,10 @@ function stateMachine(div) {
 		
 		$("#songs").css({
 				"display" : "inherit",
-				"background-image": "url('img/songs.jpg');"
+				"background-image": "url('img/defaultcd.jpg');",
+				"vertical-align": "middle;",
+				"margin-left" : "auto;",
+				"margin-right" : "auto;"
 			});
 			
 			$("#videos").css({
@@ -213,7 +216,11 @@ function stateMachine(div) {
 		}
 		
 		$("#pictures").css({
-				"display" : "inherit"
+				"display" : "inherit",
+				"vertical-align": "middle;",
+				"margin-left" : "auto;",
+				"margin-right" : "auto;"
+				
 			});
 			
 			$("#videos").css({
@@ -268,7 +275,10 @@ function stateMachine(div) {
 			
 		}
 			$("#videos").css({
-				"display" : "inherit"
+				"display" : "inherit",
+				"vertical-align": "middle;",
+				"margin-left" : "auto;",
+				"margin-right" : "auto;"
 			});
 					
 			$("#songs").css({
