@@ -426,13 +426,21 @@ header{
 	height: 20px;	
 }
 
+.time_remaining{
+	position: relative;
+	left : 255px;
+	top: -184px;
+	width: 50px;
+	height: 20px;	
+}
+
 .volume{
 	position: relative;
 	width: 100px;
 	height: 20px;
 	border: 3px;
 	solid #34b4e3;
-	top: -237px;
+	top: -257px;
 }
 
 .fullscreen{
@@ -442,7 +450,7 @@ header{
 	background-color:#111111;
 	background-image: url(img/fullscreen.png);
 	border-style: none;
-	top: -273px;
+	top: -294px;
 }
 
 .fullscreen:hover{
@@ -458,7 +466,7 @@ header{
 	background-image: url(img/sound.png);
 	border-style: none;
 	left:1321px;
-	top: -200px;
+	top: -223px;
 }
 
 .float_l{

@@ -573,17 +573,21 @@ function setsizes() {
 		"width" : w * .6 - 146,
 	})
 
+	$('.time_remaining').css({
+		"left" : w * .6 + 190,
+	})
+	
 	$('.volume').css({
 		"width" : w - w * .6 - 146 - w * .2,
-		"left" : w * .6 + 225,
+		"left" : w * .6 + 324,
 	})
 
 	$('.volume_icon').css({
-		"left" : w * .6 + 146,
+		"left" : w * .6 + 240,
 	})
 
 	$('.fullscreen').css({
-		"left" : w * .8 + 100,
+		"left" : w * .8 + 205,
 	})
 
 	var vidHeight = (rightPanelWidth - 50) * 9 / 16;
@@ -684,6 +688,47 @@ function trackBarProgress(percent) {
 	document.getElementById('progress').getElementsByTagName('p')[0].style.width = (percent);
 }
 
+var displayDuration = '1';
+
+function displayChange(){
+	if (displayDuration == '1')
+	{
+		displayDuration = '0';
+	}
+	else 
+	{
+		displayDuration = '1';
+	}
+	var appendMinus = '';
+	if(displayDuration == '1')
+	{
+		timeDuration = _V_("mainvideo").duration();
+	}
+	else if(displayDuration == '0')
+	{
+		appendMinus = '-';
+		timeDuration = _V_("mainvideo").duration()-_V_("mainvideo").currentTime();
+	}
+	var hoursRemaining = timeDuration / 3600;
+	hoursRemaining = Math.round(hoursRemaining - .5);
+	var minutesRemaining = timeDuration / 60;
+	minutesRemaining = Math.round(minutesRemaining - .5);
+	var secondsRemaining = timeDuration % 60;
+	secondsRemaining = Math.round(secondsRemaining - .5);
+	if(secondsRemaining < 10) {
+		secondsRemaining = '0' + secondsRemaining;
+	}
+	if(minutesRemaining < 10) {
+		minutesRemaining = '0' + minutesRemaining;
+	}
+
+	// $(".buttons_controls_play_pause").css({
+	// "background-image" : "url('./css/img/pause.png')"
+	// });
+	// is_Playing = '0';
+	
+	document.getElementById('time_remaining_bar').innerHTML = '<FONT COLOR="FFFFFF">' + appendMinus + hoursRemaining + ':' + minutesRemaining + ':' + secondsRemaining + '</FONT>';
+}
 var trackBarUpdate = function() {
 	var percent = '0%';
 	if(_V_("mainvideo").duration() > 0) {
@@ -704,11 +749,37 @@ var trackBarUpdate = function() {
 	if(minutes < 10) {
 		minutes = '0' + minutes;
 	}
+	
+	var appendMinus = '';
+	if(displayDuration == '1')
+	{
+		timeDuration = _V_("mainvideo").duration();
+	}
+	else if(displayDuration == '0')
+	{
+		appendMinus = '-';
+		timeDuration = _V_("mainvideo").duration()-_V_("mainvideo").currentTime();
+	}
+	var hoursRemaining = timeDuration / 3600;
+	hoursRemaining = Math.round(hoursRemaining - .5);
+	var minutesRemaining = timeDuration / 60;
+	minutesRemaining = Math.round(minutesRemaining - .5);
+	var secondsRemaining = timeDuration % 60;
+	secondsRemaining = Math.round(secondsRemaining - .5);
+	if(secondsRemaining < 10) {
+		secondsRemaining = '0' + secondsRemaining;
+	}
+	if(minutesRemaining < 10) {
+		minutesRemaining = '0' + minutesRemaining;
+	}
 
 	// $(".buttons_controls_play_pause").css({
 	// "background-image" : "url('./css/img/pause.png')"
 	// });
 	// is_Playing = '0';
+	
+	document.getElementById('time_remaining_bar').innerHTML = '<FONT COLOR="FFFFFF">' + appendMinus + hoursRemaining + ':' + minutesRemaining + ':' + secondsRemaining + '</FONT>';
+	
 
 	document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">' + hours + ':' + minutes + ':' + seconds + '</FONT>';
 };
