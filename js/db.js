@@ -137,7 +137,7 @@ function loadMedia(tx, rs) {
 }
 
 function renderSong(row, i) {
-	return "<li id=s" + i + "><a onclick: ><p class='inline'>" + row.title + "," + row.artist + "," + row.album + "</p></a></li>";
+	return "<a href='http:www.google.com'><li id=s" + i + "><p class='inline'>" + row.title + "," + row.artist + "," + row.album + "</p></li></a>";
 }
 
 function renderVideo(row, i) {

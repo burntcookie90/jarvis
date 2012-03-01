@@ -106,11 +106,16 @@ function playPause() {
 		}
 	});
 };
-
+/**
+ * 0 - music
+ * 1 - image
+ * 2 - video
+ */
 var isGhostBarEnabled = '0';
 var currentState = '0'; 
 function stateMachine(div) {
-	if($(div).attr("id") == "media_select_songs") {
+	if($(div).attr("id") == "media_select_songs") { 
+		currentState = '0';
 		jarvis.webdb.getMedia(loadMedia, "songs");
 		$(".buttons_media_music").css({
 				"background-image" : "url(./css/img/music_hover.png)",
@@ -124,7 +129,6 @@ function stateMachine(div) {
 		if(isGhostBarEnabled == '0') {
 			_V_("mainvideo").fadeOut(200);
 			_V_("mainvideo").pause();
-			currentState = '0';
 			$("#media_select_level3").css({
 				"background-color" : "#111111",
 				"visibility" : "visible"
@@ -149,8 +153,7 @@ function stateMachine(div) {
 				"background-image" : "url(./css/img/songs.png)",
 				"visibility" : "visible"
 			});
-			
-			
+
 			isGhostBarEnabled = '1';
 			
 		}
