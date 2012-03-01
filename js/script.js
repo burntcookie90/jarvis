@@ -583,7 +583,7 @@ function setsizes() {
 	})
 
 	$('.fullscreen').css({
-		"left" : w * .8 + 100,
+		"left" : w - 90,
 	})
 
 	var vidHeight = (rightPanelWidth - 50) * 9 / 16;
