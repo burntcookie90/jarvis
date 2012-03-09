@@ -3,13 +3,10 @@
 /* alpha2-release */
 
 /* TEAM */
-  <your title>: <your name>
   Site: jarvis.vishnurajeevan.com
-  Twitter: 
-  Location: 
+  Location: Alanta, GA
 
 /* THANKS */
-  Names (& URL): 
   Daranh Hun
   Vishnu Rajeevan
   Westley Schrack
