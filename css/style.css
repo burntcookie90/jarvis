@@ -695,3 +695,6 @@ footer{
 	margin-right: auto;
 	
 }
+a.mediaitem:hover {
+	cursor: pointer;
+}

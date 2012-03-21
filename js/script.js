@@ -8,75 +8,63 @@ var resize_pane_selected = '1';
 var w = $(window).width();
 var rightPanelWidth = w / 2;
 var leftPanelWidth = w / 2;
-
-//These are fake JSON for local simulation
 var json_fail = {
 	'SONG' : 'null',
 	'VIDEO' : 'null',
 	'IMAGES' : 'null'
 };
+
 var json_success = {
 	"SONG" : {
-		"url-base" : "../media/song/",
-		"count" : "4",
+		"url" : "media/song/",
+		"count" : "3",
 		"songs" : [{
 			"ID" : "1",
-			"genre" : "Alternative Rock",
+			"genre" : "Rap",
 			"type" : "mp3",
-			"title" : "Bitter Sweet Symphony",
-			"album" : "ZAlbum",
-			"artist" : "The Verve"
+			"title" : "Gold Digger",
+			"album" : "Late Registration",
+			"artist" : "Kanye West"
 		}, {
 			"ID" : "2",
-			"genre" : "rock",
+			"genre" : "R&B",
 			"type" : "mp3",
-			"title" : "Ordinary World",
-			"album" : "Purple",
-			"artist" : "Stone Temple Pilots"
+			"title" : "Empire State of Mind",
+			"album" : "Youtube Album",
+			"artist" : "Mateo"
 		}, {
 			"ID" : "3",
-			"genre" : "Alternative Rock",
+			"genre" : "Rap",
 			"type" : "mp3",
-			"title" : "Ya Ya",
-			"album" : "fAlbum",
-			"artist" : "The Berve"
-		}, {
-			"ID" : "4",
-			"genre" : "rock",
-			"type" : "mp3",
-			"title" : "Wa Wa",
-			"album" : "Zinton",
-			"artist" : "Wa Wa Band"
+			"title" : "The Fire",
+			"album" : "Undun",
+			"artist" : "The Roots"
 		}]
 	},
 	"VIDEO" : {
-		"url-base" : "../media/video/",
-		"count" : "2",
+		"url" : "media/video/",
+		"count" : "1",
 		"videos" : [{
 			"ID" : "0",
-			"type" : "mp4",
-			"title" : "Meet The Spy",
-		}, {
-			"ID" : "2",
-			"type" : "mp4",
-			"title" : "Niggas In Paris",
+			"type" : "webm",
+			"title" : "Jay_Z_Kanye_West_Ni_as_In_Paris",
 		}]
 	},
 	"IMAGES" : {
-		"url-base" : "../media/img/",
+		"url" : "media/img/",
 		"count" : "3",
 		"images" : [{
 			"ID" : "2",
 			"type" : "jpg",
-			"title" : "newcar",
+			"title" : "Avatar",
 		}, {
 			"ID" : "3",
 			"type" : "jpg",
-			"title" : "newcar2",
+			"title" : "Maserati",
 		}, {
 			"ID" : "4",
 			"type" : "jpg",
-			"title" : "newcar3",
+			"title" : "beach",
 		}]
 	}
 }
@@ -88,7 +76,6 @@ var json_default = {
 	'IMAGES' : 'default'
 };
 
-//This function allows our controls to interface with the media players
 function playPause() {
 
 	_V_("mainvideo").ready(function() {
@@ -110,8 +97,6 @@ function playPause() {
 	});
 };
 /**
- * Controls the current state of the media player
- * arg0: takes in the div that called the function
  * 0 - music
  * 1 - image
  * 2 - video
@@ -290,7 +275,6 @@ function stateMachine(div) {
 
 }
 
-//Modifies CSS rules for hover images
 $(".buttons_media_music").mouseover(function() {
 	if(currentState!='0')
 	{
@@ -407,12 +391,6 @@ $(".music_songs").mouseover(function() {
 		});
 	}
 });
-
-/**
- * Allows our resize buttons to resize the right panel.
- * arg0: takes in the div that called the function
- *
- */
 function resizePanes(div) {
 	if($(div).attr("id") == "resize_left") {
 		rightPanelWidth = w / 4 * 3;
@@ -521,10 +499,6 @@ $(".buttons_controls_play_pause").mouseover(function() {
 		});
 	}
 });
-
-/**
- * Sets the sizes on the initial drawing of the screen based on resolution of user's machine
- */
 function setsizes() {
 	w = $(window).width();
 	var h = $(window).height();
@@ -619,16 +593,10 @@ function setsizes() {
 
 }
 
-/**
- * Hides the page until resizing is complete
- */
 function hidestuff(boxid) {
 	document.getElementById(boxid).style.visibility = "hidden";
 }
 
-/**
- *Makes the ajax call
- */
 function ajaxcall() {
 	$.ajax({
 		url : '../php/json.php',
@@ -645,9 +613,6 @@ function ajaxcall() {
 	});
 }
 
-/**
- * Function to utilize our seek bar for the media
- */
 function seek() {
 	//Get mouse X position
 	var x = event.pageX;
@@ -666,9 +631,6 @@ function seek() {
 
 }
 
-/**
- * Function that makes an API call to put video.js into fullscreen
- */
 function fullscreen() {
 	_V_("mainvideo").requestFullScreen();
 }
@@ -676,9 +638,6 @@ function fullscreen() {
 var isMuted = '0';
 var oldVolume = '0';
 
-/**
- * Allows our volume bar to control media volume
- */
 function changeVolume() {
 	//Get mouse X position
 	var x = event.pageX;
@@ -699,9 +658,6 @@ function changeVolume() {
 
 }
 
-/**
- * Ties our mute button to the media volume
- */
 function mute() {
 	if(isMuted == '0') {
 		$(".volume_icon").css({
@@ -839,6 +795,37 @@ _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 _V_("mainvideo").addEvent("pause", paused);
 _V_("mainvideo").addEvent("play", playing);
 
+/**
+ * Populates the right window with the selected media. 
+ * Combines path with file name
+ * @param type : music, image, video
+ * @param path : path for media
+ */
+function pathCreater(type,filename, path){
+	var completePath = path + filename;
+	
+	if (type == "music"){
+		document.getElementById("mainsong").src = completePath;
+	}
+	else if (type == "image"){
+		document.getElementById("mainimg").src = completePath;
+	}
+	else if (type == "video"){
+		document.getElementById("mainvideo_html5_api").src = completePath;
+	}
+}
+
+/**
+ * Onclick listener for list items
+ * @param type : music, image, video
+ * @param filename : name of file with extension ("hello.mp3")
+ * @param path : path for media
+ */
+function listItemHandler(type, filename, path){
+	pathCreater(type, filename, path);
+	playPause();
+}
+
 
 function init() {
 	jsonObj = json_success;
@@ -855,6 +842,8 @@ $(window).resize(function() {
 	setsizes();
 });
 
+/*Library above********************************************************************************************/
+/**********************************************************************************************************/
 $(document).ready(function() {
 	init();
 	// Spacebar eventlistener
