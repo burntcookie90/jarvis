@@ -81,13 +81,13 @@ function playPause() {
 	_V_("mainvideo").ready(function() {
 		var myPlayer = this;
 
-		if(is_Playing == '0') {
+		if(is_Playing == '0' && currentState == '2') {
 			myPlayer.play();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/pause.png')"
 			});
 			is_Playing = '1';
-		} else {
+		} else if(currentState == '2'){
 			myPlayer.pause();
 			$(".buttons_controls_play_pause").css({
 				"background-image" : "url('./css/img/play.png')"
@@ -95,6 +95,22 @@ function playPause() {
 			is_Playing = '0';
 		}
 	});
+	
+		if(is_Playing == '0' && currentState == '0') {
+			audio = document.getElementsByTagName("audio")[0];
+	 		audio.play();
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/pause.png')"
+			});
+			is_Playing = '1';
+		} else if(currentState == '0'){
+			audio = document.getElementsByTagName("audio")[0];
+	 		audio.pause();
+			$(".buttons_controls_play_pause").css({
+				"background-image" : "url('./css/img/play.png')"
+			});
+			is_Playing = '0';
+		}
 };
 /**
  * 0 - music
@@ -593,6 +609,7 @@ function setsizes() {
 
 }
 
+
 function hidestuff(boxid) {
 	document.getElementById(boxid).style.visibility = "hidden";
 }
@@ -614,6 +631,8 @@ function ajaxcall() {
 }
 
 function seek() {
+	if(currentState != '1')
+	{
 	//Get mouse X position
 	var x = event.pageX;
 	//Get the offset of the trackbar
@@ -623,11 +642,20 @@ function seek() {
 	//Create a percentage of progress on the bar
 	var xPercent = xOffset / parseInt(document.getElementById('progress').style.width);
 	//Sets video to the play time
+	if(currentState == '2')
+	{
 	_V_("mainvideo").currentTime(_V_("mainvideo").duration() * xPercent);
 	_V_("mainvideo").play();
 	_V_("mainvideo").pause();
 	_V_("mainvideo").play();
+	}
+	
+	if(currentState == '0')
+	{
+		audio.currentTime = (audio.duration * xPercent);
+	}
 	trackBarProgress(xPercent * 100);
+	}
 
 }
 
@@ -649,7 +677,14 @@ function changeVolume() {
 	//Create a percentage of progress on the bar
 	var xPercent = xOffset / parseInt(document.getElementById('volumeBar').style.width);
 	//Sets video to the play time
+	if(currentState == '2')
+	{
 	_V_("mainvideo").volume(xPercent);
+	}
+	if(currentState == '0')
+	{
+		audio.volume = xPercent;
+	}
 	oldVolume = xPercent;
 	document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((xPercent * 100) + '%'));
 	$(".volume_icon").css({
@@ -663,7 +698,14 @@ function mute() {
 		$(".volume_icon").css({
 			"background-image" : "url('./css/img/muted.png')"
 		});
+		if(currentState == '2')
+		{
 		_V_("mainvideo").volume(0);
+		}
+		if(currentState == '0')
+		{
+		audio.volume = 0;
+		}
 		document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = ('0%');
 		isMuted = '1';
 	} else {
@@ -671,7 +713,14 @@ function mute() {
 		$(".volume_icon").css({
 			"background-image" : "url('./css/img/sound.png')"
 		});
+		if(currentState == '2')
+		{
 		_V_("mainvideo").volume(oldVolume);
+		}
+		if(currentState == '0')
+		{
+		audio.volume = oldVolume;
+		}
 		document.getElementById('volumeBar').getElementsByTagName('p')[0].style.width = (((oldVolume * 100) + '%'));
 	}
 }
@@ -723,18 +772,35 @@ function displayChange(){
 	document.getElementById('time_remaining_bar').innerHTML = '<FONT COLOR="FFFFFF">' + appendMinus + hoursRemaining + ':' + minutesRemaining + ':' + secondsRemaining + '</FONT>';
 }
 var trackBarUpdate = function() {
+	if(currentState != '1')
+	{
 	var percent = '0%';
-	if(_V_("mainvideo").duration() > 0) {
+	if(_V_("mainvideo").duration() > 0 && currentState == '2') {
 		percent = _V_("mainvideo").currentTime() / _V_("mainvideo").duration() * 100 + '%';
 	}
+	if(currentState == '0')
+	{
+		percent = audio.currentTime/audio.duration * 100 + '%';
+	}
 	trackBarProgress(percent);
-
-	var timeInSec = _V_("mainvideo").currentTime();
-	var hours = _V_("mainvideo").currentTime() / 3600;
+	var currentTime;
+	var duration;
+	if(currentState == '2')
+	{
+		currentTime =_V_("mainvideo").currentTime();
+		duration = _V_("mainvideo").duration();
+	}
+	if(currentState == '0')
+	{
+		currentTime = audio.currentTime;
+		duration = audio.duration;
+	}
+	var timeInSec = currentTime;
+	var hours = currentTime/ 3600;
 	hours = Math.round(hours - .5);
-	var minutes = _V_("mainvideo").currentTime() / 60;
+	var minutes = currentTime / 60;
 	minutes = Math.round(minutes - .5);
-	var seconds = _V_("mainvideo").currentTime() % 60;
+	var seconds = currentTime % 60;
 	seconds = Math.round(seconds - .5);
 	if(seconds < 10) {
 		seconds = '0' + seconds;
@@ -746,12 +812,12 @@ var trackBarUpdate = function() {
 	var appendMinus = '';
 	if(displayDuration == '1')
 	{
-		timeDuration = _V_("mainvideo").duration();
+		timeDuration = duration;
 	}
 	else if(displayDuration == '0')
 	{
 		appendMinus = '-';
-		timeDuration = _V_("mainvideo").duration()-_V_("mainvideo").currentTime();
+		timeDuration = duration-currentTime;
 	}
 	var hoursRemaining = timeDuration / 3600;
 	hoursRemaining = Math.round(hoursRemaining - .5);
@@ -775,6 +841,7 @@ var trackBarUpdate = function() {
 	
 
 	document.getElementById('play_time_bar').innerHTML = '<FONT COLOR="FFFFFF">' + hours + ':' + minutes + ':' + seconds + '</FONT>';
+	}
 };
 
 
@@ -794,6 +861,8 @@ var playing = function(){
 _V_("mainvideo").addEvent("timeupdate", trackBarUpdate);
 _V_("mainvideo").addEvent("pause", paused);
 _V_("mainvideo").addEvent("play", playing);
+var audio = document.getElementById("mainsong");
+audio.addEventListener("timeupdate", trackBarUpdate);
 
 /**
  * Populates the right window with the selected media. 
