@@ -47,7 +47,7 @@ var json_success = {
 		"videos" : [{
 			"ID" : "0",
 			"type" : "webm",
-			"title" : "Jay_Z_Kanye_West_Ni_as_In_Paris",
+			"title" : "Otis",
 		}]
 	},
 	"IMAGES" : {
