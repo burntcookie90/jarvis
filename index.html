@@ -1,56 +1,124 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Jarvis by burntcookie90</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<html class="no-js" lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>J.A.R.V.I.S.</title>
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" href="css/style.css">
+		<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
+		<!--video-js-->
+		<script src="http://vjs.zencdn.net/c/video.js"></script>
+		<!--//video-js-->
+	</head>
+	<body class="bg1 nooverflow">
+		<div id="whiteout"></div>
+		<div id="fullscreen" ></div>
+		<div id="container" class="bg1">
+			<header class="bg1 paddingset">
+				<div id="jarvis_logo" class="padding_5">
+					<img src="img/jarvis_logo.png" />
+				</div>
+				<div id="media_select" class="center bg1">
+					<div id="media_select_btn_container" class="">
+						<div id="media_select_songs" onclick="stateMachine(this);" class="buttons_media_music bg2 marginset"></div>
+						<div id="media_select_img" onclick="stateMachine(this);" class="buttons_media_pics bg2 marginset"></div>
+						<div id="media_select_vids" onclick="stateMachine(this);" class="buttons_media_vids bg2 marginset"></div>
+					</div>
+				</div>
+				<div id="media_select_level2" class="bg1">
+					<!--Ghost bar for music-->
+					<div id="media_select_level3" class="center">
+						<div id = "music_artist" class="music_artist" onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','artist')"></div>
+						<div id = "music_album" class="music_album"  onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','album')"></div>
+						<div id = "music_genre" class="music_genre"  onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','genre')"></div>
+						<div id = "music_songs" class="music_songs"  onclick="jarvis.webdb.getMediaBy(loadMedia,'songs','title')"></div>
+					</div>
+				</div>
+				<div id="resize_buttons" class="bg1">
+					<div id="resize_right" onclick="resizePanes(this)" class= "float_r"></div>
+					<div id="resize_reset" onclick="resizePanes(this)" class="float_r"></div>
+					<div id="resize_left" onclick="resizePanes(this)" class="float_r"></div>
+				</div>
+			</header>
+			<!-- GENRE ARTIST ALBUM SONGS -->
+			<div id="main" class="bg3 nooverflow">
+				<div id="main_leftpanel" class="bg2 float_l overflow_hidden text_color">
+					<ul id="main_leftpanel_list">
+						<a href="www.google.com"><li id="s100"><p class='inline'>Hello</p></li></a>
+					</ul>
+				</div>
+				<div id="main_rightpanel" class="bg3 float_r overflow_hidden">
+					<div id="rightpanel_top" class="bg2 padding_5">
+						<!-- video tag goes here -->
+						<section id="videos" class="video">
+							<video id="mainvideo"  class="video-js vjs-default-skin" preload controls
+							data-setup="{}">
+								<source src="" type='video/webm'>
+							</video>
+						</section>
+						<section id="songs"  class="songs">
+							<audio id="mainsong" autoplay="false"
+							src="" type="audio/mp3" ></audio>
+						</section>
+						<section id="pictures" class="pictures">
+							<img id="mainimg" src="" />
+						</section>
+					</div>
+					<div id="rightpanel_bottom" class="bg2 padding_5">
+						<!-- These will all need to be templates depending on media type -->
+						<div id="media_SONG" class="mediameta center_hor nooverflow center_ver text_color">
+							<!-- <script type="text/javascript">
+							media = JSON.parse(localStorage.getItem("media"));
+							document.write(media.VIDEO.videos[0].title);
+							document.write(media.VIDEO.videos[0].ID);
+							document.write(media.VIDEO.videos[0].type);
 
-  </head>
-  <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/burntcookie90/jarvis">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/burntcookie90/jarvis/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/burntcookie90/jarvis/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
-
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Jarvis</h1>
-          <p>CS3300</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/burntcookie90">burntcookie90</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
-        </div>
-
-
-<hr><h2>HOW TO RUN</h2>
-
-<ol>
-<li>Make sure you have Google Chrome or Internet Explorer 9 or 10 installed.</li>
-<li>Uncompress the tarball into it's own directory. Make sure the file hierarchy is not damaged.</li>
-<li>Open index.html in the browser of your choice (of course, one of 2 listed in Step 1).</li>
-<li>Click things. Enjoy the media.</li>
-</ol><p>Live demo can be seen at index.vishnurajeevan.com/jarvis</p>
-      </section>
-
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+							</script> -->
+						</div>
+						<!-- DO NOT REMOVE THE FOLLOWING: -->
+						<!-- <div id="media_VIDEO" class="mediameta">
+						<div id="media_title" class="nooverflow">Video Title</div>
+						</div>
+						<div id="media_IMAGES" class="mediameta">
+						<div id="media_title" class="nooverflow">Image Title</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<footer class="bg4 paddingset">
+				<div id="container_controls" class="bg1">
+					<div id="prev_img" class="buttons_controls_prev"></div>
+					<div id="play_pause_img" onclick= "playPause()" class="buttons_controls_play_pause bg2 "></div>
+					<div id="next_img" class="buttons_controls_next bg2" onclick="testJSON()"></div>
+					<div id="play_time_bar" class= "play_time bg1">
+						<FONT COLOR="262c32">0:00:00</FONT>;
+					</div>
+					<div id="progress"  onclick= "seek()" class = "trackbar bg2">
+						<p style="position: absolute; left: 0; top: 0; background-color: #34b4e3; width: 0%; height: 100%; font-size: 0px;">
+							&nbsp;
+						</p>
+					</div>
+					<div id="time_remaining_bar" onclick = "displayChange()" class= "time_remaining bg1">
+						<FONT COLOR="262c32">0:00:00</FONT>;
+					</div>
+					<div id="volumeIcon"  onclick = "mute()" class="volume_icon bg2"></div>
+					<div id="volumeBar"  onclick= "changeVolume()" class = "volume bg2">
+						<p style="position: absolute; left: 0; top: 0; background-color: #34b4e3; height: 100%; font-size: 0px;">
+							&nbsp;
+						</p>
+					</div>
+					<div id="fullscreenIcon"  onclick = "fullscreen()" class="fullscreen bg2 "></div>
+				</div>
+		</div>
+		</footer>
+		</div> <script src="js/libs/jquery-1.6.2.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/db.js"></script>
+		<script src="js/script.js"></script>
+	</body>
 </html>
